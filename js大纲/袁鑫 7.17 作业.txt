@@ -1,0 +1,68 @@
+
+
+1. $的ready函数的写法, 并在函数中,输出你的名字
+
+2. 列举jquery的选择器,给出代码
+
+3. jquery的事件的绑定方法, 给出代码,包含 - click  - hover - 等等至少5个,并且要求,
+	事件源含有window
+
+
+1. $(document).ready() 方法允许我们在文档完全加载完后执行函数.
+
+ 	$(document).ready(function() {
+		console.info("袁鑫");
+	});
+
+2. jQuery 中所有选择器都以美元符号开头：$()。
+	jQuery 元素选择器基于元素名选取元素 -- $("p")
+	jQuery #id 选择器通过 HTML 元素的 id 属性选取指定的元素 -- $("#test")
+	jQuery 类选择器可以通过指定的 class 查找元素 -- $(".test")
+
+3. click()事件 点击
+	$(window).ready(function() {
+		$("p").click(function() {
+			$(this).hide();
+		});
+	});
+	
+   hover()事件 悬停
+	$(window).ready(function() {
+		$("#p1").hover(
+			function() {
+				alert("你进入了 p1!");
+			},
+			function() {
+				alert("拜拜! 现在你离开了 p1!");
+			}
+		)
+	});
+
+   mousedown()事件 按下
+	$(window).ready(function() {
+		$("#p1").mousedown(function() {
+			alert("鼠标在该段落上按下！");
+		});
+	});
+
+   mouseup()事件  抬起
+	$(window).ready(function() {
+		$("#p1").mouseup(function() {
+			alert("鼠标在段落上松开。");
+		});
+	});
+
+   focus() & blur()事件  获得和失去焦点
+	$(window).ready(function() {
+		$("input").focus(function() {
+			$(this).css("background-color", "#cccccc");
+		});
+		$("input").blur(function() {
+			$(this).css("background-color", "#ffffff");
+		});
+	});
+
+
+
+
+

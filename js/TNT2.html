@@ -1,0 +1,239 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<title></title>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<style type="text/css">
+			body{
+				background-color: palegoldenrod;
+			}
+			#bg {
+				margin-left: 20px;
+				width: 80px;
+				height: 80px;
+				transform: rotate(-50deg);
+				position: absolute;
+				top: 50px;
+				z-index: -1;
+			}
+
+			/*生成小球，并定义初始位置*/
+			#ball {
+				width: 50px;
+				position: relative;
+				top: 10px;
+				left: 20px;
+			}
+			#bg2 {
+				margin-left: 20px;
+				width: 80px;
+				height: 80px;
+				transform: rotate(50deg);
+				position: absolute;
+				top: 50px;
+				z-index: -1;
+			}
+			
+			/*生成小球，并定义初始位置*/
+			#ball2 {
+				width: 30px;
+				position: relative;
+				top: 10px;
+				left: -20px;
+			}
+
+			.changjing {
+				background-image: url("images/场景.png");
+				filter: drop-shadow(10px 10px 10px black);
+				background-repeat: no-repeat;/*背景图不平铺*/
+				background-size:100% 100% ;/*设置背景图尺寸*/
+				width: 1200px;
+				height: 600px;
+				margin: 0 auto;
+				border: 0px solid #00FFFF;
+				position: relative;
+				background-color: cornsilk;
+				z-index: -999;
+			}
+
+			.ren1 {
+				width: 120px;
+				height: 120px;
+				position: absolute;
+				top: 350px;
+				left: 50px;
+
+			}
+
+			.zhu {
+				width: 180px;
+			}
+
+			.ren2 {
+				width: 120px;
+				height: 120px;
+				position: absolute;
+				top: 350px;
+				left: 1050px;
+
+			}
+			.jieshao{
+				width: 1200px;
+				height: 300px;
+				margin: 0 auto;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="changjing">
+			<div class="ren1" id="zu">
+				<div id="bg">
+					<div id="ball"><img id="ball" src="images/炸弹.png" alt=""></div>
+				</div>
+				<div><img class="zhu" src="images/乔治.png" alt=""></div>
+			</div>
+
+			<div class="ren2" id="re">
+				<div><img src="images/man0.png" alt=""></div>
+				<div id="bg2">
+					<div id="ball"><img id="ball2" src="images/火球.png" alt=""></div>
+				</div>
+			</div>
+
+		</div>
+		<div class="jieshao">
+			<p>猪：<br>移动:上--w；下--s；左--a；右--d；技能--空格键；上角度--q；下角度--e</p>
+			<p>人：<br>移动:上--i；下--k；左--j；右--l；技能--h；上角度--u；下角度--o</p>
+
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var x = 0;
+	var zu = document.getElementById("zu");
+	var re = document.getElementById("re");
+	document.onkeydown = function(e) { //键盘按下事件绑定
+		var e = window.event || e;
+		switch (e.keyCode) {
+			case 65: //左37
+				zu.style.left = Math.max(50, zu.offsetLeft - 10) + "px";
+				break;
+			case 87: //上38
+				zu.style.top = Math.max(300, zu.offsetTop - 10) + "px";
+				break;
+			case 68: //右39
+				zu.style.left = Math.min(500, zu.offsetLeft + 10) + "px";
+				break;
+			case 83: //下40
+				zu.style.top = Math.min(370, zu.offsetTop + 10) + "px";
+				break;
+			case 32: //空格键32
+				start();
+				break;
+
+
+			case 74: //i j k l:73 74 75 76
+				re.style.left = Math.max(600, re.offsetLeft - 10) + "px";
+				break;
+			case 73: //5 53
+				re.style.top = Math.max(300, re.offsetTop - 10) + "px";
+				break;
+			case 76: //3 51
+				re.style.left = Math.min(1050, re.offsetLeft + 10) + "px";
+				break;
+			case 75: //2 50
+				re.style.top = Math.min(380, re.offsetTop + 10) + "px";
+				break;
+			case 72: //o 79 h72
+				start2();
+				break;
+		}
+
+		if (e.keyCode == 81) { //a65  w87 q81 e69
+			x -= 5;
+			var p = x + "deg";
+
+			zu.style.transform = "origin(0 0)";
+			zu.style.transform = "rotate(" + p + ")";
+		} else if (e.keyCode == 69) { //d68  s83
+			x += 5;
+			var p = x + "deg";
+			zu.style.transform = "rotate(" + p + ")";
+		}
+		
+		if (e.keyCode == 79) { //a65  w87 q81 e69 u85 o79
+			x -= 5;
+			var p = x + "deg";
+		
+			re.style.transform = "origin(0 0)";
+			re.style.transform = "rotate(" + p + ")";
+		} else if (e.keyCode == 85) { //d68  s83
+			x += 5;
+			var p = x + "deg";
+			re.style.transform = "rotate(" + p + ")";
+		}
+
+	}
+
+
+
+
+	// 			document.onkeydown = function(q) { //键盘按下事件绑定
+	// 				var q = window.event || q;
+	// 
+	// 				if (q.keyCode == 32) {
+	// 					start();
+	// 				}
+	// 			}
+	// 
+	function start() {
+		var x, y, k = 1,
+			t;
+		//x是水平方向移动路径；y是垂直方向的；k记录次数，可与0.1相乘得时间；t记录setInterval的返回id，用于clearInterval
+		t = setInterval(function() {
+			x = 30 + 0.1 * k * 4 * 100;
+			//S(x)=S(0)+t*V(x)，100是自定义的米到px 转换数
+			y = 30 + 1 / 2 * 9.8 * 0.1 * k * 0.1 * k * 100; //S(y)=S(0)+1/2*g*t*t
+			var j = document.getElementById("ball");
+			//通过修改小球的top和left，修改小球的位置
+			j.style.top = y;
+			j.style.left = x;
+			k++; //每次调用，k自增，简化计算
+			if (x > 480 || y > 480) {
+				clearInterval(t); //小球达到边界时，清除setInterval
+				j.style.top = 10;
+				j.style.left = 20;
+			}
+		}, 100); //每0.1s调用一次setInterval的function
+	}
+	
+	function start2() {
+		
+		var x, y, k = 1,
+			t;
+		//x是水平方向移动路径；y是垂直方向的；k记录次数，可与0.1相乘得时间；t记录setInterval的返回id，用于clearInterval
+		t = setInterval(function() {
+			x = -30 - 0.1 * k * 4 * 100;
+			//S(x)=S(0)+t*V(x)，100是自定义的米到px 转换数
+			y = 30 + 1 / 2 * 9.8 * 0.1 * k * 0.1 * k * 100; //S(y)=S(0)+1/2*g*t*t
+			var j = document.getElementById("ball2");
+			//通过修改小球的top和left，修改小球的位置
+			j.style.top = y;
+			j.style.left = x;
+			k++; //每次调用，k自增，简化计算
+			if (x > 480 || y > 480) {
+				clearInterval(t); //小球达到边界时，清除setInterval
+				j.style.top = 10;
+				j.style.left = -20;
+			}
+		}, 100); //每0.1s调用一次setInterval的function
+	}
+			if(document.getElementsByClassName("ren2").style.left =600){
+			 console.info("命中！");
+			 alert("命中!!")
+			 
+	}
+
+</script>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	function y1(a, b) {
+		return a < b ? a : b;
+	}
+	y1(3, 4); //3
+
+	function y2(a, b) {
+		if (isNaN(a) || isNaN(b)) {
+			console.info("输入错误！")
+			return;
+		} else {
+			return a > b ? a : b;
+
+		}
+	}
+
+	var name = "";
+	var username = name || "匿名用户"; //name为空则输出“匿名用户”;不为空输出第一个
+
+	//实现函数,输入一个字符串,一个数组,返回,字符串是否在数组中,如果在,返回其在数组中的下标
+
+	function searchArray(string1, array1) {
+		//遍历
+		for (var i = 0; i < array1.length; i++) {
+			if (string1 == array1[i]) {
+				return i;
+			}
+		}
+		return "no-match";
+	}
+	var ourClass = ["yang", "wang", "man", "yuan", "shang"];
+	var str = "yuan";
+	var result = searchArray(str, ourClass);
+	console.info(result);
+
+
+
+	//编写一个函数,参数为a,b两个数字,返回值为两个数之间的随机数
+	function getRan(a, b) {
+		//var ranData;//undifine
+		//ranData = Math.floor(Math.random()*a+b);
+
+		/* 	if(a>b){
+			return Math.floor(Math.random()*(b-a+1)+b);
+			}else{
+			return Math.floor(Math.random()*(b-a+1)+a);	
+			} */
+
+		return Math.floor(Math.random() * (Math.abs(a - b) + 1) + (a < b ? a : b));
+	}
+
+	//测试
+	var r1 = getRan(3, 9);
+	console.info(r1);
+
+	//例4:编写一个函数,实现交换数组中两个元素的位置(a = ["tomy","peter"]);
+	var a001 = ['tomy', "peter"];
+
+	function change(a001) {
+		var a001 = ['tomy', "peter"];
+		var a;
+		a = a001[0];
+		a001[0] = a001[1];
+		a001[1] = a;
+		return a001;
+	}
+	console.info(change(a001));
+
+	//https://www.cnblogs.com/beli/p/6297741.html
+
+	//冒泡排序
+	var a = [3, 5, 7, 8, 9, 33, 44, 55];
+	for (var i = 0; i < a.length - 1; i++) {
+		for (var j = 0; j < a.length - 1 - i; j++) {
+			if (a[j] > a[j + 1]) {
+				var temp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = temp;
+			}
+		}
+	}
+	console.info(a);
+
+	//一个student 数组， 对分数进行排序， 并且将自己的排名加入到属性中。
+	//编写一个函数， 输入姓名， 返回其排名信息。
+	function Student(name, total) {
+		this.name = name;
+		this.total = total;
+	}
+	var students = [];
+	students.push(new Student("方文山", 80));
+	students.push(new Student("周杰伦", 60));
+	students.push(new Student("刘德华", 77));
+	students.push(new Student("赵本山", 68));
+	students.push(new Student("赵四", 73));
+	students.push(new Student("沈腾", 12));
+
+	//排序后得到的结果应该是{name: "方文山", total: 80，index: 1}
+	for (var i = 0; i < students.length - 1; i++) {
+		for (var j = 0; j < students.length - 1 - i; j++) {
+			if (students[j].total < students[j + 1].total) {
+				var temp = students[j];
+				students[j] = students[j + 1];
+				students[j + 1] = temp;
+			}
+		}
+	}
+	for (var m = 0; m < students.length; m++) {
+		students[m].index = m + 1;
+	}
+	console.info(students);
+
+
+	function searchIndex(name) {
+		//容错
+		if (!name) {
+			console.info("请输入参数");
+			return;
+		}
+		for (var n = 0; n < students.length; n++) {
+			if (students[n].name == name) {
+				return students[n].index;
+			}
+		}
+		return "没有找到";
+	}
+
+	function soertAndSearch(name, studentArray) {
+		if (!name) {
+			console.info("请输入参数");
+			return;
+		}
+		for (var i = 0; i < studentArray.length - 1; i++) {
+			for (var j = 0; j < studentArray.length - 1 - i; j++) {
+				if (studentArray[j].total < studentArray[j + 1].total) {
+					var temp = studentArray[j];
+					studentArray[j] = studentArray[j + 1];
+					studentArray[j + 1] = temp;
+				}
+			}
+		}
+		for (var m = 0; m < studentArray.length; m++) {
+			studentArray[m].index = m + 1;
+		}
+		console.info(studentArray);
+
+		for (var n = 0; n < students.length; n++) {
+			if (students[n].name == name) {
+				return students[n].index;
+			}
+		}
+		return "没有找到";
+	}
+	
+</script>

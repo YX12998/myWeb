@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>球球</title>
+	</head>
+	<style type="text/css">
+		body{
+			text-align: center;
+		}
+		.box{
+			width: 600px;
+			height: 320px;
+			margin: 0 auto;
+		}
+		.box1,.box2{
+			box-sizing: border-box;
+			width: 200px;
+			height: 220px;
+			margin: 50px;
+			border:1px solid black;
+			float: left;
+			position: relative;
+		}
+		.qiu1{
+			width: 30px;
+			height: 30px;
+			background-color: black;
+			border-radius: 50%;
+			position: absolute;
+		}
+		.qiu2{
+			width: 30px;
+			height: 30px;
+			background-color: red;
+			border-radius: 50%;
+			position: absolute;
+		}
+	</style>
+	<body>
+		<input type="button" value="发球" id="bt1">
+		<input type="button" value="计时" id="bt2">
+		<div class="box">
+			<div class="box1" id="box1"></div>
+			<div class="box2" id="box2"></div>
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+
+
+	document.getElementById("bt1").onclick = function(){
+		var count1 = 0;
+		var timer1 = setInterval(function(){
+			count1 += 1;
+			var qiu = document.createElement("div");
+			qiu.setAttribute("class", "qiu1");
+			// document.getElementById("box1").appendChild(qiu);
+			var xRan = Math.random() * 90;
+			var yRan = Math.random() * 90;
+			qiu.style.left = xRan + "%";
+			qiu.style.top = yRan + "%";
+			document.getElementById("box1").appendChild(qiu);
+			if(count1>8){
+				clearInterval(timer1);
+			}
+		},600)
+		var timer2 = setInterval(function(){
+			count1 += 1;
+			var qiu2 = document.createElement("div");
+			qiu2.setAttribute("class", "qiu2");
+			// document.getElementById("box1").appendChild(qiu);
+			var xRan = Math.random() * 90;
+			var yRan = Math.random() * 90;
+			qiu2.style.left = xRan + "%";
+			qiu2.style.top = yRan + "%";
+			document.getElementById("box1").appendChild(qiu2);
+			if(count1>8){
+				clearInterval(timer2);
+			}
+		},600)
+	}
+
+</script>

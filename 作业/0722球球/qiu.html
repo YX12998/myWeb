@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>qiu</title>
+	</head>
+	<script src="jquery-2.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		div{
+			width: 220px;
+			height: 200px;
+			margin: 100px;
+			border: 1px solid black;
+			float: left;
+		}
+	</style>
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div></div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		for (var i = 0; i < 20; i++){
+			var tempB = document.createElement("div");
+			tempB.setAttribute("class","red");
+			tempB.setAttribute("class","blue");
+			
+		}
+	});
+</script>

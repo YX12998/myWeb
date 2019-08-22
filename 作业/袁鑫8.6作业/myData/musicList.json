@@ -1,0 +1,24 @@
+{
+	"page": 2,
+	"pageCount": 40,
+	"currList": [
+		{
+			"songName": "服不服",
+			"songId": "001",
+			"songUrl": "myAudio/服不服.mp3",
+			"songImg": "服不服.png"
+		},
+		{
+			"songName": "读不读",
+			"songId": "002",
+			"songUrl": "myAudio/读不读.mp3",
+			"songImg": "读不读.png"
+		},
+		{
+			"songName": "早上好",
+			"songId": "003",
+			"songUrl": "myAudio/早上好.mp3",
+			"songImg": "早上好.png"
+		}
+	]
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>翻书</title>
+		<style type="text/css">
+			.Page{
+				width: 200px;
+				width: 300px;
+				margin: 100px auto;
+				position: relative;
+			}
+			.page1, .page2{
+				width: 200px;
+				height: 300px;
+				transform-origin: 0 0;
+				position: absolute;
+				font-size: 36px;
+				box-shadow: 3px 3px 20px #000000;
+				padding: 20px;
+				border-radius: 8px;
+			}
+			.page1{
+				background-color: black;
+				color: white;
+			}
+			.page2{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="Page">
+			<div class="page2" id="page2">看啥看</div>
+			<div class="page1" id="page1">一起看</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var rg = 0;
+	var timer1 = setInterval(function(){
+		rg += 2;
+		if(rg>180){
+			rg = 0;
+		}
+		document.getElementById("page1").style.transform = "rotateY("+rg+"deg)";
+
+	},100);
+
+</script>

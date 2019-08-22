@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>TNT</title>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	</head>
+	<style>
+		
+		.pwx_rect{
+			position:absolute;
+			left:30px;
+			top:30px;
+		
+			height:50px;
+			z-index: -1;
+			border-radius: 50%;
+			
+			}
+/* 		.pwx_hr{
+			border-top:2px solid #ddd;
+			position:absolute;
+			width:98%;
+			left:0px;
+			top:350px;
+			} */
+		
+		.changjing{
+			width: 1200px;
+			height: 800px;
+			margin: 0 auto;
+			border: 1px solid beige;
+			position: relative;
+			background-color: cornsilk;
+			z-index: -999;
+		}
+		.ren1 {
+			width: 120px;
+			height: 120px;
+			position: absolute;
+			top: 300px;
+			left: 50px;
+			
+		}
+		.ren2 {
+			width: 120px;
+			height: 120px;
+			position: absolute;
+			top: 300px;
+			right: 50px;
+			
+		}
+
+
+
+		.zhu {
+			width: 180px;
+		
+		}
+
+		.b1{
+			height: 50px;
+			width: 50px;
+			background-color: yellowgreen;
+		}
+	</style>
+	<body>
+		
+		<div class="changjing">
+			<!-- <input type="button" value="发射" onclick="test()" /> -->
+			
+			<!-- <div class="pwx_hr"></div> -->
+			<!-- 			<input class="b1" type="button" name="" id="bt1" value="上升" />
+			<input class="b1" type="button" name="" id="bt2" value="右移" />
+			<input class="b1" type="button" name="" id="bt3" value="下降" />
+			<input class="b1" type="button" name="" id="bt4" value="左移" /> -->
+			<div class="ren1" id="zu">
+
+				
+				<div><img class="zhu" src="images/乔治.png" alt=""></div>
+				<div class="pwx_rect" id="rect"><img class="pwx_rect" src="images/炸弹.png" alt=""></div>
+			</div>
+			<div class="ren2" id="zu">
+				<div><img src="images/man0.png" alt=""></div>
+			</div>
+
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	// document.getElementById("bt1").onclick = function() {
+	// 	document.getElementById("zu").style.transform = "rotate(-20deg)";
+	// }
+	// document.getElementById("bt2").onclick = function() {
+	// 	document.getElementById("zu").style.transform = "translateX(60px)";
+	// }
+	// 	document.getElementById("bt3").onclick = function() {
+	// 	document.getElementById("zu").style.transform = "rotate(30deg)";
+	// }
+	// 	document.getElementById("bt4").onclick = function() {
+	// 	document.getElementById("zu").style.transform = "translateX(-30px)";
+	// }
+	var x = 0;
+	var zu = document.getElementById("zu");
+	document.onkeydown = function(e) { //键盘按下事件绑定
+		var e = window.event || e;
+		switch (e.keyCode) {
+			case 65: //左37
+				zu.style.left = Math.max(0, zu.offsetLeft - 10) + "px";
+				break;
+			case 87: //上38
+				zu.style.top = Math.max(0, zu.offsetTop - 10) + "px";
+				break;
+			case 68: //右39
+				zu.style.left = Math.min(1000, zu.offsetLeft + 10) + "px";
+				break;
+			case 83: //下40
+				zu.style.top = Math.min(800, zu.offsetTop + 10) + "px";
+				break;
+			case 32: //空格键32
+				test();break;
+		}
+		if (e.keyCode == 38) { //a65  w87
+			x -= 5;
+			var p = x + "deg";
+
+			zu.style.transform = "origin(0 0)";
+			zu.style.transform = "rotate(" + p + ")";
+		} else if (e.keyCode == 40) { //d68  s83
+			x += 5;
+			var p = x + "deg";
+			zu.style.transform = "rotate(" + p + ")";
+		}
+	}
+
+
+
+	test = function() {
+		var rect = document.getElementById("rect");
+		pwx(rect, 60, 5);
+
+	}
+
+	function pwx(rect, radian, step) {
+		var animate = function(opt) {
+			var cos = Math.cos(opt.radian * Math.PI / 180); //邻边比斜边,60度的话等于1/2
+			var sin = Math.sin(opt.radian * Math.PI / 180); //对边比斜边,30度的话等于1/2
+			var left = opt.rect.offsetLeft;
+			var top = opt.rect.offsetTop;
+			if (opt.radian > 0) {
+				left += opt.step;
+				opt.radian -= 1;
+				var a = left - opt.initLeft;
+				var c = (a / cos);
+				var b = (sin * c);
+				opt.rect.style.left = opt.initLeft + a + "px";
+				opt.rect.style.top = opt.initTop - b + "px";
+				setTimeout(function() {
+					animate(opt);
+				}, 10);
+			} else {
+				opt.rect.style.left = left + opt.step + "px";
+				opt.rect.style.top = opt.initTop + "px";
+				opt.step && animate({
+					step: --opt.step,
+					g: 1,
+					rect: opt.rect,
+					radian: opt.radian,
+					initTop: opt.rect.offsetTop,
+					initLeft: opt.rect.offsetLeft
+				});
+			}
+		}
+		animate({
+			step: step,
+			g: 1,
+			rect: rect,
+			radian: radian,
+			initTop: rect.offsetTop,
+			initLeft: rect.offsetLeft
+		});
+	}
+
+
+</script>

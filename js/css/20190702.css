@@ -1,0 +1,19 @@
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background-color: cornsilk;
+}
+div{
+	color: navy;
+	font-size: 48px;
+	font-weight: 600;
+	line-height: 88px;
+	text-shadow:2px 2px 0px aliceblue;
+	letter-spacing: 10px;//字间距
+}
+hr{
+	height: 30px;
+	background-color:#00FFFF;
+	border: 0px solid gold;
+}
