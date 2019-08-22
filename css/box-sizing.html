@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .aa{
+        width: 500px;
+        height: 500px;
+        /*border: 20px solid black;*/
+        padding: 50px;
+        margin: 50px;
+        box-sizing: content-box;
+
+        /*默认值content-box标准盒子此时定义的宽高为内容的宽高*/
+        /*border-box怪异盒子此时定义的宽高是实际的宽高*/
+        outline: 10px solid red;/*轮廓线 写法类似border（边框）实线 红*/
+        font-size: 30px;/*字体大小*/
+        font-weight: bold;/*字体加粗效果 bold相当于700*/
+        font-style: italic;/*字体的倾斜效果*/
+        font-family: 楷体;/*字体样式*/
+        text-decoration-line:underline;
+        /*underline下划线 line-through贯穿线 overline上划线*/
+        text-decoration-color:#63a35c;
+        text-decoration-style: solid;
+        /*solid实线 double双线 dotted点状线 dashed虚线 wavy波浪线*/
+    }
+    .bb{
+
+        /*underline下划线 line-through贯穿线 overline上划线*/
+        text-decoration-color:#63a35c;
+        text-decoration-style: solid;
+        text-decoration-line: underline;
+    }
+</style>
+<body>
+    <div class="aa">
+        发的联合国李开复共和国
+        <div>asdasdadsadasd继承性</div>
+    </div>
+<div class="bb">gfjghjfghj</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变形</title>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+<style>
+    body{
+        background-color: #333;
+    }
+    div{
+        width: 150px;
+        height: 150px;
+        background-color: yellowgreen;
+        float: left;/*左浮动 竖排变横排*/
+        margin: 100px;
+        transition: 2s;
+    }
+    body>div:nth-child(1):hover{/*hover鼠标悬浮在元素上时 发生的样式变化*/
+        transform: translateX(100px);
+        /*水平方向上的平移，正值右平移，负值左平移*/
+    }
+    body>div:nth-child(2):hover{/*hover鼠标悬浮在元素上时 发生的样式变化*/
+        transform: translateY(100px);
+        /*水平方向上的平移，正值下平移，负值上平移*/
+    }
+    body>div:nth-child(3):hover{/*hover鼠标悬浮在元素上时 发生的样式变化*/
+        transform: translate(100px,50px);
+        /*参数一水平方向平移，参数二垂直方向平移*/
+    }
+
+    body>div:nth-child(4):hover{
+        transform: scaleX(2);
+        /*水平方向缩放*/
+    }
+    body>div:nth-child(5):hover{
+        transform: scaleY(0.5);
+        /*垂直方向缩放*/
+    }
+    body>div:nth-child(6):hover{
+        transform: scale(2);
+        /*整体缩放 字体大小最小是12px 小于12px时只有缩放能实现*/
+    }
+
+    body>div:nth-child(7):hover{
+        transform: rotateX(240deg);
+        /*绕着x轴旋转*/
+    }
+    body>div:nth-child(8):hover{
+        transform: rotateY(240deg);
+        /*绕着y轴旋转*/
+    }
+    body>div:nth-child(9):hover{
+        transform-origin: 0 0;
+        /*绕着几何中心旋转*/
+    }
+    body>div:nth-child(9):hover{
+        transform: rotate(360deg);
+        /*绕着几何中心旋转*/
+    }
+
+</style>
+</html>

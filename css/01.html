@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="a">
+    <div class="b">活动</div>
+    <div class="caidan">
+        <div>职位</div>
+        <div>公司</div>
+    </div>
+</div>
+</body>
+<style>
+    .a{
+        padding: 0;
+    }
+
+    .b:hover{
+        color: yellow;
+        background-color: #000;
+        margin: 0;
+    }
+    .b{
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        position: relative;
+        border: 1px solid #000;
+        text-align: center;
+        background-color: yellow;
+    }
+
+    .caidan{
+        display: none;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        position: absolute;
+        top: 60px;
+        text-align: left;
+        color: black;
+        line-height: 50px;
+        left: 8px;
+    }
+    .caidan>div{
+        padding-left: 20px;
+    }
+    .caidan>div:hover{
+        background-color: yellow;
+
+    }
+
+
+    .a:hover>.caidan{
+        display: block;
+    }
+    
+</style>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡</title>
+</head>
+<style>
+    .box{
+        width: 1000px;
+        height: 800px;
+        border: 1px solid #000;
+
+    }
+    .box>div{
+        width: 100px;
+        height: 100px;
+        margin-top: 30px;
+        background-color:  dimgray;
+        position: relative;
+        left: 0;
+        /*transition:all 3s 1s ease;*/
+        /*transition: 2s linear;*/
+        transition-duration: 3s;/*过渡时间*/
+        /*transition-property: all;!*过渡属性 默认值all*!/
+        /*transition-delay: 1s;!*过渡延时*!*/
+        /*transition-timing-function: ease;!*默认值ease平滑过渡 linear线性过渡（匀速）*!*/
+    }
+    .box:hover>div{
+        left: 900px;
+
+    }
+    .box>div:nth-child(1){
+        transition-timing-function: linear;
+    }
+    .box>div:nth-child(3){
+        transition-timing-function: ease-in;
+    }
+    .box>div:nth-child(4){
+        transition-timing-function: ease-out;
+    }
+    .box>div:nth-child(5){
+        transition-timing-function: ease-in-out;
+    }
+</style>
+<body>
+<div class="box">
+    <div>线性过渡</div>
+    <div>平滑过渡</div>
+    <div>由慢到快</div>
+    <div>由快到慢</div>
+    <div>由慢到快再到慢</div>
+</div>
+
+</body>
+</html>

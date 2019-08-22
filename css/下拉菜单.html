@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+</head>
+<body>
+    <div class="box">
+        职位
+        <div class="caidan">
+            <div>职位</div>
+            <div>公司</div>
+            <div>发布职位</div>
+
+        </div>
+    </div>
+</body>
+<style>
+    .box{
+        width: 200px;
+        height: 50px;
+        line-height: 50px;/*行高*/
+        text-align: center;
+        position: relative;
+        border: 1px solid #000;
+        background-color: #FFE300;
+
+    }
+    .box:hover{
+        background-color: #333;
+        color: #FFE300;
+        cursor: pointer;/*鼠标样式 手型*/
+    }
+    .caidan{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        box-sizing: border-box;
+        transition: 2s;
+        color: black;
+        background-color: yellowgreen;
+
+        /*隐藏方式*/
+        /*第一种*/
+        display: none;/*不保留物理空间*/
+        /*visibility: hidden;*//*保留物理空间*/
+
+        /*第二种*/
+        /*opacity: 0;*//*!*透明度*!*/
+
+                /*第三种*/
+        /*height: 0;*//*!*高度*!*!*/
+        /*overflow: hidden;*//*溢出隐藏*/
+    }
+    .caidan>div{
+        width: 190px;
+        height: 50px;
+        text-align: left;/*文本对齐样式:左对齐*/
+        padding-left: 10px;
+    }
+    .caidan>div:hover{
+        background-color: #FFE300;
+        color: black;
+    }
+    .box:hover>.caidan{
+        display: block;/*显示属性为块级元素*/
+        /*opacity: 1;*/
+        /*height: 200px;*/
+    }
+</style>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景&伪类选择符</title>
+</head>
+<body>
+
+<div class="a1"></div>
+<div class="a2"></div>
+
+<div class="a3"></div>
+<div class="a4"></div>
+</body>
+<style>
+    .a3{
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+    }
+    .a3:hover{/*鼠标悬停在元素上时发生样式变化*/
+        width: 500px;
+        height: 500px;
+
+    }
+    .a4{
+        width: 300px;
+        height: 300px;
+        background-color: red;
+    }
+    .a4:active{/*鼠标按压不放时发生样式变化 手机用的多*/
+        width: 500px;
+        height: 500px;
+    }
+
+    .a1{
+        width: 500px;
+        height: 500px;
+        border: 20px solid #000;
+        padding: 10px;
+        box-sizing: content-box;/*content-box默认标准盒子 border-box怪异盒子*/
+
+        margin: 0 auto;/*上下为零左右自动 水平居中*/
+        background-clip: content-box;/*从内容向外裁剪 背景图的裁剪区域*/
+        background-color: red;/*背景颜色*/
+        background-image: url("image/timg.jpg");/*引入背景图*/
+        background-repeat: no-repeat;/*背景图不平铺*/
+        background-size:100% 100% ;/*设置背景图尺寸
+        cover：
+        将背景图像等比缩放到完全覆盖容器，背景图像有可能超出容器。
+        contain：
+        将背景图像等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终被包含在容器内。*/
+
+        background-position:50% 50%;/*背景图定位*/
+        /*background: url("") no-repeat 0 0;*//*背景语法糖*/
+
+    }
+    .a2{
+        width: 500px;
+        height: 500px;
+        /*background: linear-gradient(to right,red,yellow,blue,green);*//*线性渐变*/
+        /*background: linear-gradient(30deg,red,yellow,blue,green);*//*线性渐变*/
+        background: radial-gradient(red,yellow,blue,green);/*径向渐变 不能设置方向*/
+
+    }
+</style>
+</html>

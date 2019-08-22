@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <link rel="stylesheet" href="style0.css">/*外部样式*/
+</head>
+<body>
+
+<div class="box"></div>
+
+<div class="bd color-gray"></div>/*优先后面的样式。。。覆盖前面的*/
+
+<div id="aaa"></div>
+<div class="ppp">
+    <div>1</div>
+    <div class="aa">2</div>
+    <div>3
+        <div>333333</div>
+    </div>
+    <div class="p">4</div>
+    <div kkk>5</div>
+    <div style="width: 100px;height: 100px;border: 1px solid #000;"></div>
+    /*内联样式*/
+
+    <p kkk="1"></p>
+</div>
+
+<!--!important级别最高-->
+样式优先级： !important>内联样式>内嵌样式>外部样式
+
+</body>
+
+<style>/*内嵌样式*/
+/*    越精确优先级越高
+    内嵌样式优先级：！important>id选择器>类选择器>元素选择器>继承样式>通配选择符>浏览器默认样式*/
+
+    [kkk="1"]{
+        
+    }
+    [kkk]{/*属性选择器*/
+        
+    }
+    .aa+div{/*+相邻选择符 匹配到紧挨着的元素是不是div*/
+        
+    }
+    .aa~div{/*~兄弟选择符 匹配到之后的所有元素*/
+        
+    }
+    
+    .ppp>div{/*子选择符 匹配到子一代元素*/
+        
+    }
+    .ppp div{/*包含选择符 匹配到被包含的元素*/
+        
+    }
+    
+    *{/*通配符选择符 匹配到页面内所有元素*/
+        margin: 0;
+        padding: 0;
+        /*边距重置*/
+    }
+    
+    div{/*元素选择器 匹配到页面所有div*/
+        
+    }
+    
+    /*公共样式*/
+    .color-gray{
+        color: gray;
+    }
+    .bd{
+        border: 1px solid #000;
+    }
+    
+    #aaa{/*id选择器 id唯一*/
+        
+    }
+</style>
+</html>

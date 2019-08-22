@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>骰子</title>
+</head>
+<body>
+<div class="box">
+
+<div class="box6">
+    <div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+    <div >
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+</div>
+
+<div class="box5">
+    <div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+
+    </div>
+    <div >
+
+        <div></div>
+    </div>
+
+    <div >
+
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+
+</div>
+
+<div class="box4">
+    <div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+    <div >
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+</div>
+
+<div class="box3">
+    <div>
+        <div></div>
+    </div>
+    <div >
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+</div>
+
+<div class="box2">
+    <div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+    </div>
+</div>
+
+<div class="box1">
+    <div>
+        <div></div>
+    </div>
+</div>
+
+</div>
+</body>
+<style>
+    .box{
+        width: 1360px;
+        border: 1px solid #000;
+        height: 2000px;
+        display: flex;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    .box6{
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        border-radius: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+    }
+    .box6>div{
+        width: 300px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+
+    }
+    .box6>div>div{
+        width: 0;
+        height: 100px;
+        border-left: 50px solid #000;
+        border-right: 50px solid #000;
+        border-radius: 50%;
+    }
+
+    .box5{
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        border-radius: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+    }
+
+    .box5>div{
+        width: 300px;
+        height: 100px;
+        display: flex;
+        justify-content: space-around;
+
+
+    }
+    .box5>div:nth-child(3){
+        width: 400px;
+    }
+
+    .box5>div>div{
+        width: 0px;
+        height: 100px;
+        border-left: 50px solid #000;
+        border-right: 50px solid #000;
+        border-radius: 50%;
+
+    }
+
+
+    .box4{
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        display:flex;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        border-radius: 50px;
+        flex-wrap: wrap;
+    }
+    .box4>div{
+        height: 300px;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box4>div>div{
+        border: 50px solid #000;
+        border-radius: 50%;
+
+    }
+
+
+    .box3{
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        display:flex;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        border-radius: 50px;
+        flex-wrap: wrap;
+    }
+    .box3>div{
+        height: 100px;
+        width: 400px;
+        display: flex;
+        justify-content: center;
+
+    }
+    .box3>div:nth-child(1){
+        justify-content: flex-start;
+     }
+    .box3>div:nth-child(3){
+        justify-content: flex-end;
+    }
+    .box3>div>div{
+        border: 50px solid #000;
+        border-radius: 50%;
+    }
+
+
+    .box2{
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        display:flex;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        border-radius: 50px;
+        flex-wrap: wrap;
+    }
+    .box2>div{
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        height: 100px;
+    }
+    .box2>div>div{
+        width: 0;
+        height: 100px;
+        border-left: 50px solid #000;
+        border-right: 50px solid black;
+        border-radius: 50%;
+    }
+
+    .box1{
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        display:flex;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        border-radius: 50px;
+        flex-wrap: wrap;
+    }
+    .box1>div>div{
+        width: 0;
+        height: 100px;
+        border-left: 50px solid #000;
+        border-right: 50px solid black;
+        border-radius: 50%;
+    }
+</style>
+</html>

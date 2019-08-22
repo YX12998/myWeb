@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滤镜</title>
+</head>
+<body>
+<img src="./images/bg_04.jpg" alt="">
+
+<div class="aa">东风公司发到公司打工</div>
+</body>
+<style>
+    .aa{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        text-shadow: 1px 1px 1px black;
+        /*文字阴影：水平位移 垂直位移 模糊值 颜色*/
+        box-shadow: 1px 1px 1px 1px black;
+        /*盒子阴影：水平位移 垂直位移 模糊值 颜色*/
+    }
+    img{
+        /*-webkit-filter: blur(10px);*/
+        /*高斯模糊*/
+
+        /*-webkit-filter: brightness(90%);*/
+        /*默认值100% 0-100%暗度 100%以上亮度*/
+
+        /*-webkit-filter: contrast(10%);*/
+        /*默认值100% 对比度*/
+
+        /*-webkit-filter: drop-shadow(1px 1px 1px black);*/
+        /*图像阴影：水平位移 垂直位移 模糊值 颜色*/
+
+        /*-webkit-filter: grayscale(20%);*/
+        /*灰度 默认0 取值0-100%*/
+
+        /*filter: hue-rotate(180deg);*/
+        /*色相旋转*/
+
+        /*filter: invert(120%);*/
+        /*图像翻转*/
+
+        /*filter: opacity(80%);*/
+        /*图像透明度 0-100%*/
+
+        /*filter: saturate(20%);*/
+        /*图像饱和度 取值范围0-正无穷*/
+
+        filter: sepia(20%);
+        /*褐度 0-100% 默认0*/
+
+    }
+
+</style>
+</html>

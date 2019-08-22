@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>::before ::after</title>
+</head>
+
+<body>
+    <div class="a1">
+        这是div里的内容
+    </div>
+
+</body>
+<style>
+    .a1{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+    .a1::before{
+        -webkit-clip-path: circle(50% at 50% 50%);
+        content: '这是before里的内容';/*内容 必须书写，可以留空*/
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    .a1::after{
+        content: '这是after里的内容';/*内容 必须书写，可以留空*/
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+    }
+</style>
+</html>

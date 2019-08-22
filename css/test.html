@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        color:#666;
+    }
+    body{
+        background-color: orange;
+    }
+    ul,li{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    .header{
+        width: 100%;
+        height: 60px;
+        background-color: #000;
+        color: #fff;
+    }
+    .head{
+        width: 1000px;
+        height: 60px;
+        margin: 0 auto;
+
+    }
+    .logo a{
+        width: 120px;
+        height: 60px;
+        float: left;
+        line-height: 60px;
+        font-size: 24px;
+        font-weight: 800;
+        font-style: italic;
+        color: #ffd230;
+    }
+    .sou{
+        width: 260px;
+        height: 32px;
+        margin: 13px 0 13px 0;
+        border: 1px solid #55a532;
+        border-radius: 50px;
+        float: left;
+    }
+    .shuru{
+        width: 200px;
+        height: 28px;
+        margin-top: 2px;
+        margin-left: 16px;
+        background-color: transparent;
+        border: 0;
+        outline: none;
+    }
+    .tu{
+        width: 25px;
+        height: 26px;
+        float: right;
+        margin-top: 4px;
+        margin-right: 10px;
+    }
+    .deng{
+        width: 260px;
+        height: 60px;
+        float: right;
+    }
+    .deng_1>li{
+        float: left;
+        line-height: 60px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .deng_1>li a{
+        color: #fff;
+    }
+    .deng_1_1{
+        z-index: 9999;
+        line-height: 30px;
+        display: none;
+        background-color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+    .deng_1_1 li:nth-child(3){
+        z-index: 9999;
+    }
+    .deng_1 li:nth-child(3):hover .deng_1_1{
+        display: block;
+    }
+    .deng_1 li:nth-child(3) li:hover{
+        background-color: #666;
+    }
+    .deng_1_1 li a{
+        color: #000;
+    }
+    
+</style>
+<body>
+<div class="header">
+    <div class="head">
+        <div class="logo"><a href="test.html">Song园</a></div>
+        <div class="sou">
+            <input class="shuru" type="text" placeholder="歌名/歌手">|
+            <img class="tu" src="images/搜.png">
+        </div>
+        <div class="deng">
+            <ul class="deng_1">
+                <li><a href="">登录</a></li>
+                <li><a href="">注册</a></li>
+                <li>
+                    <a href="">aa上传</a>
+                    <ul class="deng_1_1">
+                        <li><a href="">登录</a></li>
+                        <li><a href="">注册</a></li>
+                        <li>
+                            <a href="">aa上传</a>
+                        </li>
+                        <li><a href="">aaAPP</a></li>
+                    </ul>
+                </li>
+                <li><a href="">aaAPP</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>裁剪</title>
+</head>
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1243318_0m6vi5kseasd.css">
+<body>
+<div class="a"></div>
+<div class="b"></div>
+<div class="c"></div>
+<div class="iconfont icon-jiantou3 aaa"> </div>
+</body>
+<style>
+    .aaa{
+        font-size: 50px;
+        color: #0077aa;
+    }
+    .a{
+        width: 500px;
+        height: 500px;
+        background-color: grey;
+        /*clip-path: circle(50% at 0% 50%);*//*inset()矩形裁剪 circle圆形裁剪 ellipse椭圆裁剪 polygon多边形裁剪*/
+        /*clip-path: ellipse(250px 200px at 50% 50%);*/
+        clip-path: polygon(0 0,50% 0%,100% 50%,100% 100%,50% 100%,0 50%);
+
+    }
+    .b,.c{
+        width: 800px;
+        height: 200px;
+        background-color: red;
+        float: left;
+    }
+    .b{
+       clip-path: polygon(0 0,0 100%,80% 100%,100% 0);
+     }
+    .c{
+        clip-path: polygon(20% 0,100% 0,100% 100%,0 100%);
+    }
+
+</style>
+</html>

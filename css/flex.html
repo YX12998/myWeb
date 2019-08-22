@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+</head>
+<body>
+<div class="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+
+</div>
+</body>
+<style>
+    .box{
+        width: 500px;
+        height: 500px;
+        border: 1px solid #000;
+        display: flex;
+        /*flex-direction: row;*/
+        /*设置主轴方向 默认值row从左到右*/
+        /*  http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+        row（默认值）：主轴为水平方向，起点在左端。
+        row-reverse：主轴为水平方向，起点在右端。
+        column：主轴为垂直方向，起点在上沿。
+        column-reverse：主轴为垂直方向，起点在下沿。
+        */
+
+        /*flex-wrap: wrap;*//*默认值nowrap 设置项目是否换行*/
+        /*flex-flow: row wrap;*//*综合上面两个属性简写形式*/
+
+        /*justify-content: space-around;*/
+        /*主轴方向的对齐方式
+          space-evenly:项目两边到边界的距离等于项目间距
+          space-around:项目两边到边界的距离等于项目间距的一半
+          space-between:项目两边靠两边，项目间距均等
+        */
+
+        /*align-items: stretch;*/
+        /*交叉轴方向对齐方式 默认值stretch沾满父容器*/
+
+        /*align-content: space-around;*/
+        /*多条轴线 交叉轴的对齐方式默认值stretch沾满父容器*/
+
+    }
+    .box>div{
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+        flex: 1;
+    }
+/*    .box>div:nth-last-child(1){
+        order:-1;!*设置项目的排列顺序 默认值0 值越小越靠前*!
+    }*/
+
+/*    .box>div:nth-child(2){
+        flex-grow: 1;!*设置项目的放大比例 默认值0*!
+    }
+    .box>div:nth-child(1){
+        flex-grow: 1;!*设置项目的放大比例 默认值0*!
+    }*/
+    .box>div:nth-child(2){
+        flex-shrink: 0;/*设置项目的缩小比例 默认值1*/
+    }
+</style>
+</html>

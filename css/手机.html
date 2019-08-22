@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="phonePage">
+    <div class="head"></div>
+    <div class="content">
+        <div class="msg"></div>
+    </div>
+    <div class="tab"></div>
+</div>
+
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body,html{
+        height: 100%;
+    }
+    .phonePage{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .head{
+        height: 200px;
+        border: 1px solid #000;
+    }
+    .content{
+        height: 0;
+        flex-grow: 1;
+        border: 1px solid #000;
+        overflow: auto;/*超出显示滚动条*/
+    }
+    .tab{
+        height: 200px;
+        border: 1px solid #000;
+    }
+    .msg{
+        height: 6000px;
+        width: 20%;
+        /*宽高相对于父容器*/
+        background-color:dimgray;
+    }
+</style>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div class="box">
+
+    <div class="a4"></div>
+    <div class="a5"></div>
+    <div class="a1"></div>
+    <div class="a2">
+        <p>魔力唇彩</p><hr>
+        哈萨克剪短发哈会计师的话
+    </div>
+
+</div>
+
+</body>
+<style>
+    .a4{
+        width: 400px;
+        height: 400px;
+        /*background: rgba(999,66,660,0.6);*/
+        background-color: red;
+        opacity: 0.2;
+        position: absolute;
+
+        left: -400px;
+        top: -400px;
+        transform-origin: 50% 50%;
+        transform: rotate(45deg);
+
+    }
+    .a5{
+        width: 400px;
+        height: 400px;
+        /*background: rgba(999,66,660,0.6);*/
+        background-color: red;
+        opacity: 0.2;
+        position: absolute;
+
+        left: 220px;
+        top: 220px;
+        transform-origin: 50% 50%;
+        transform: rotate(45deg);
+
+    }
+
+    .box{
+        margin: 0 auto;
+        width: 212px;
+        height: 212px;
+        position: relative;
+        top: 100px;
+        overflow: hidden;
+        border-radius: 30px;
+    }
+    .a1{
+        top: 5px;
+        left: 5px;
+        width: 200px;
+        height: 200px;
+        z-index: -1;
+        background-image: url("image/modeo02.jpg");
+        position: absolute;
+        border-radius: 30px;
+        background-repeat: no-repeat;/*背景图不平铺*/
+    }
+    .a2{
+        text-align: center;
+        background: rgba(40,40,40,0.6);
+        width: 200px;
+        height: 0px;
+        position: absolute;
+        left: 6px;
+        top: 50px;
+        transform: rotate(60deg);
+        color: white;
+        overflow: hidden;
+    }
+    .box:hover .a2{
+        transition: 2s;
+        transform: rotate(0deg);
+        height: 100px;
+    }
+    .box:hover .a4 {
+        left: -200px;
+        top: -200px;
+        transition: 2s;
+
+    }
+    .box:hover .a5 {
+        left:20px;
+        top: 20px;
+        transition: 2s;
+
+    }
+</style>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跑步</title>
+</head>
+<style>
+    body{
+        background-color: #000000;
+    }
+    .box{
+        width: 300px;
+        position: relative;
+        top: 200px;
+        left: 100px;
+        animation-name: ren;
+        animation-duration: 6s;
+        animation-delay: 0s;
+    animation-timing-function: linear;
+        animation-iteration-count: infinite;/*无限循环*/
+        /*        animation-direction: alternate;!*定义动画是否交替运行*!*/
+    }
+    .ding{
+        width: 60px;
+        height: 40px;
+        background-color: white;
+        position: absolute;
+        left: 30px;
+        border-radius: 10px;
+        animation: d 1s linear infinite;
+
+    }
+    .mao{
+        width: 120px;
+        height: 40px;
+        background-color: white;
+        position: absolute;
+        top: 30px;
+        left: 0;
+        border-radius: 10px;
+        animation: m 1s linear infinite;
+
+    }
+    .lian{
+        width: 60px;
+        height: 60px;
+        clip-path: circle(50% at 50% 50%);
+        background-color: #000000;
+        position: absolute;
+        top: 60px;
+        left: 30px;
+    }
+    .tou{
+        width: 80px;
+        height: 80px;
+        clip-path: circle(50% at 50% 50%);
+        background-color: #fff;
+        position: absolute;
+        top: 50px;
+        left: 20px;
+    }
+    .shen{
+        width: 10px;
+        height: 200px;
+        background-color: #fff;
+        position: absolute;
+        top: 120px;
+        left: 50px;
+
+    }
+    .gez{
+        width: 120px;
+        height: 120px;
+        border-left: 10px solid #fff;
+        border-bottom: 10px solid #fff;
+        position: absolute;
+        top: 130px;
+        left: 50px;
+        transform-origin: 0 0;
+        transform: rotate(45deg);
+        animation: 1s linear infinite alternate gez;
+    }
+    .gey{
+        width: 120px;
+        height: 120px;
+        border-left: 10px solid #fff;
+        border-bottom: 10px solid #fff;
+        position: absolute;
+        top: 130px;
+        left: 50px;
+        transform-origin: 0 0;
+        transform: rotate(-45deg);
+        animation: 1s linear infinite alternate gey;
+    }
+    .tuiz{
+        width: 120px;
+        height: 120px;
+        border-right: 10px solid #fff;
+        border-top: 10px solid #fff;
+        position: absolute;
+        top: 320px;
+        left: 60px;
+        transform-origin: 0 0;
+        transform: rotate(120deg);
+        animation: 2s linear infinite alternate tuiz;
+    }
+    .tuiy{
+        width: 120px;
+        height: 120px;
+        border-right: 10px solid #fff;
+        border-top: 10px solid #fff;
+        position: absolute;
+        top: 320px;
+        left: 60px;
+        transform-origin: 0 0;
+        transform: rotate(0deg);
+        animation: 2s linear infinite alternate tuiy;
+    }
+
+    @keyframes ren {
+        0%{
+            left: 0;
+        }
+        100%{
+            left: 100%;
+        }
+
+    }
+    @keyframes tuiz {
+        0% {
+            transform: rotate(120deg);
+        }
+        30% {
+            transform: rotate(0deg);
+        }
+        60% {
+            transform: rotate(120deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+    @keyframes tuiy {
+        0% {
+            transform: rotate(0deg);
+        }
+        30% {
+            transform: rotate(120deg);
+        }
+        60% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(120deg);
+        }
+    }
+
+
+    @keyframes gez {
+        0% {
+            transform: rotate(45deg);
+        }
+        30% {
+            transform: rotate(0deg);
+        }
+        60% {
+            transform: rotate(45deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+    @keyframes gey {
+        0% {
+            transform: rotate(-45deg);
+        }
+        30% {
+            transform: rotate(0deg);
+        }
+        60% {
+            transform: rotate(-45deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+
+</style>
+<body>
+<div class="box">
+
+
+    <div class="tou"></div>
+    <div class="lian"></div>
+    <div class="ding"></div>
+    <div class="mao"></div>
+    <div class="shen"></div>
+    <div class="gez"></div>
+    <div class="gey"></div>
+    <div class="tuiz"></div>
+    <div class="tuiy"></div>
+</div>
+
+</body>
+</html>

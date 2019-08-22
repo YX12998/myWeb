@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>转</title>
+</head>
+<body>
+<div class="box">
+    <div class="box1">
+        <div class="box3"></div>
+    </div>
+    <div class="box2">
+        <div class="box4"></div>
+    </div>
+
+
+</div>
+</body>
+<style>
+    body{
+        background-color: orange;
+    }
+    .box{
+        margin: 0 auto;
+        position: relative;
+        top: 200px;
+
+        width: 500px;
+        height: 500px;
+    }
+    .box1{
+        width: 300px;
+        height: 300px;
+        border: 8px solid #000;
+        border-radius: 50%;
+        position: relative;
+        top: 100px;
+        left: 100px;
+        animation-name: b3;
+        animation-duration: 2s;
+        animation-delay: 0s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    .box3{
+        width: 200px;
+        height: 50px;
+        background-color: orange;
+        position: absolute;
+        transform: rotate(-25deg);
+    }
+
+    @keyframes b3 {
+        0%{
+            transform-origin: 50% 50%;
+            transform: rotate(0deg);
+        }
+        100%{
+            transform-origin: 50% 50%;
+            transform: rotate(-360deg);
+        }
+    }
+    .box2{
+        height: 200px;
+        width: 200px;
+        border: 8px solid #000;
+        border-radius: 50%;
+        position: relative;
+        top: -165px;
+        left:150px;
+        animation-name: b4;
+        animation-duration: 1.5s;
+        animation-delay: 0s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    .box4{
+        width: 120px;
+        height: 60px;
+        background-color: orange;
+        position: absolute;
+        transform: rotate(-25deg);
+    }
+
+    @keyframes b4 {
+        0%{
+            transform-origin: 50% 50%;
+            transform: rotate(0deg);
+        }
+        100%{
+            transform-origin: 50% 50%;
+            transform: rotate(360deg);
+        }
+    }
+</style>
+</html>

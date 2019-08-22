@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .aa{
+        width: 500px;
+        height: 500px;
+        /*clip-path: circle(10% at 50% 50%);*//*圆形裁剪 at 中心*/
+        /*左上角at 0 0,右上角at 0 100%*/
+        /*clip-path: ellipse(10% 20% at 50% 50%);*//*椭圆裁剪*/
+        -webkit-clip-path: polygon(50% 0,100% 100%,0 100%);/*多边形裁剪，坐标依次连接形成的闭合路径就是裁剪区域*/
+        /*webkit 谷歌浏览器兼容*/
+        background-color: lightslategray;
+    }
+    .deng{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        -webkit-clip-path:polygon(25% 0,75% 0,100% 100%,0 100%)
+    }
+    .ping{
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        -webkit-clip-path:polygon(0 0,75% 0,100% 100%,25% 100%)
+    }
+    .ban{
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+        -webkit-clip-path: circle(50% at 100% 50%);
+    }
+    .wu{
+        width: 200px;
+        height: 200px;
+        background-color: gold;
+        -webkit-clip-path:polygon(0 30%,100% 30%,15% 100%,50% 0,85% 100%)
+
+
+    }
+    .you{
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        -webkit-clip-path:polygon(0 30%,50% 30%,50% 0,100% 50%,50% 100%,50% 70%,0 70%)
+    }
+
+</style>
+<body>
+
+1.等腰梯形
+<div class="deng"></div>
+2.平行四边形
+<div class="ping"></div>
+3.半圆
+<div class="ban"></div>
+4.五角星
+<div class="wu">
+
+</div>
+5.右箭头
+<div class="you"></div>
+
+<div class="aa"></div>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+*{
+    padding: 0;/*清除浏览器自带的内边距*/
+    margin: 0;/*清除浏览器自带的外边距*/
+}
+body{
+    font-family: 微软雅黑;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+@font-face {/*嵌入字体图标*/
+    font-family: 'iconfont';/*自定义字体名称*/
+    src: url('../iconfont/iconfont.eot');
+    src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../iconfont/iconfont.woff2') format('woff2'),
+    url('../iconfont/iconfont.woff') format('woff'),
+    url('../iconfont/iconfont.ttf') format('truetype'),
+    url('../iconfont/iconfont.svg#iconfont') format('svg');
+}
+
+
+
+
+.header{
+    width: 1200px;/*宽度*/
+    height: 54px;/*高度*/
+    margin: 20px auto;/*让盒子水平居中 居中上下20px 左右自动*/
+}
+.logo{
+    width: 163px;
+    height: 54px;
+    margin-left: 55px;/*距离左边55px*/
+    float: left;/*左浮动*/
+}
+.search{
+    float: left;/*左浮动*/
+    margin-left: 160px;/*距离左边160px*/
+    width: 630px;
+    height: 50px;
+    border: 2px solid #f84c48;/*边框 大小2px 直线 颜色*/
+    border-radius: 27px;/*设置圆角边框*/
+}
+input[type=text]{
+    height: 45px;
+    width: 500px;
+    border: none;/*去掉边框*/
+    margin: 2px 0 0 30px;
+    float: left;
+    outline: none;/*去掉文本框的外部蓝色边框*/
+}
+.search-btn{
+    font-family: 'iconfont';/*引用字体图标*/
+    width: 100px;
+    height: 50px;
+    float: right;
+    margin-right: -2px;
+    background: #f84c48;
+    border-radius: 27px;/*设置圆角边框*/
+    display: inline-block;/*把a转成行块标签 设置的宽度和高度才有效*/
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;/*去掉字体下划线*/
+    text-align: center;/*文字水平居中*/
+    line-height: 50px;/*文字垂直居中*/
+}
+
+.information{
+    width: 100px;
+    height: 54px;
+    line-height: 54px;/*文字垂直居中*/
+    float: right;
+    font-family: 'iconfont';/*引用字体图标*/
+}
+.information a{
+    font-size: 32px;
+    text-decoration: none;/*去掉字体下划线*/
+    color: #f84c48;
+    margin-left: 10px;
+}
+.information a:hover{
+    color: #da413e;
+}
+/*头部header样式结束*/
+
+
+.nav{
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+    position: relative;/*相对定位*/
+}
+.classification{
+    width: 285px;
+    height: 60px;
+    background: #f84c48;
+    color: #fff;
+    text-align: center;/*文字水平居中*/
+    line-height: 60px;/*文字垂直居中*/
+    font-size: 18px;/*字体大小*/
+    float: left;
+}
+.menu{
+    float: left;
+    line-height: 60px;/*文字垂直居中*/
+    font-size: 18px;/*字体大小*/
+    color: #282828;
+}
+.menu li{
+    float: left;
+    margin-left: 80px;
+    list-style: none;/*去掉li的列表样式*/
+}
+.menu li a{
+    color: #282828;
+    text-decoration: none;/*去掉字体下划线*/
+
+}
+.menu li a:hover{
+    color: #f84c48;
+}
+
+.sub-menu{
+    width: 285px;
+    height: 598px;
+    background: rgba(40,40,40,0.7);
+    position: absolute;
+    top: 60px;
+    font-family: iconfont;
+    font-size: 16px;
+    z-index: 9999999;/*设置已定位元素的层级顺序 数值越大越靠上*/
+}
+.sub-menu li{
+    width: 285px;
+    height: 72px;
+    line-height: 72px;
+    color: #ffffff;
+}
+.sub-menu li a{
+    color: #ffffff;
+    float: left;
+}
+.sub-menu span{
+    float: left;/*左浮动*/
+    margin: 0 20px 0 30px;/*距离 上0 右20px 下0 左30px*/
+    font-size: 26px;
+}
+.sub-menu em{
+    float: right;
+    margin-right: 20px;
+    font-size: 26px;
+    font-style: normal;/*设置文字的样式 无*/
+}
+.sub-menu li:hover{
+    background: #ffffff;
+}
+.sub-menu li:hover a{
+    color: #282828;
+}
+.sub-menu li:hover>.sub-menu-box{
+    display: block;
+}
+.sub-menu li:hover span,.sub-menu li:hover em{
+    color: #f84c48;
+}
+.sub-menu-box{
+    position: absolute;
+    top: 0;
+    left: 285px;
+    width: 915px;
+    height: 598px;
+    background: rgba(255,255,255,0.9);
+    padding: 60px;/*设置内间距60px*/
+    display: none;/*隐藏*/
+}
+.menu-small{
+    float: left;
+    width: 230px;
+    height: 500px;
+    border-right: 1px solid #f84c48;/*右边框*/
+    margin-right: 50px;
+}
+.sub-menu ul li:hover .sub-menu-box{
+    display: block;/*显示*/
+}
+.menu-list{
+    width: 100%;
+    height: 140px;
+    margin-bottom: 50px;
+}
+.menu-list h4{
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #282828;
+    font-weight: normal;/*去掉字体加粗*/
+}
+.menu-list a{
+    color: #656565;
+    line-height: 30px;/*设置文字的行高*/
+    margin-right: 12px;
+}
+.menu-list a:hover{
+    color: #f84c48;
+}
