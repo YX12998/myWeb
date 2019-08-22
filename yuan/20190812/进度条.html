@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>进度条</title>
+		<style type="text/css">
+			.bar{
+				width: 320px;
+				height: 40px;
+				margin: 20px auto;
+				background: orange;
+				border-radius: 20px;
+				position: relative;
+			}
+			.bar_in{
+				/* width: 100px; */
+				height: 40px;
+				background-color: orangered;
+				border-radius: 20px;
+				float: left;
+			}
+			.around{
+				width: 50px;
+				height: 50px;
+				/* background-color: greenyellow; */
+				border-radius: 50%;
+				position: absolute;
+				right: 0;
+				top: -5px;
+				background: url(ar2.jpg)no-repeat;
+				background-size: 100%;
+				background-position: 50% 50%;
+			}
+			.tex{
+				width: 40px;
+				height: 40px;
+				position: absolute;
+				line-height: 40px;
+				left: 50%;
+				margin-left: -20px;
+				color: white;
+			}
+			#bt1{
+				width: 100px;
+				height: 40px;
+				display: block;
+				margin: 100px auto;
+				border-radius: 20%;
+			}
+			.tex2{
+				height: 40px;	
+				line-height: 40px;
+				font-size: 18px;
+				position: absolute;
+				right: 0;
+				color: orangered;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="bar">
+			<div class="bar_in" id="bar_in"></div>
+			<div class="tex2" id="tex2">lalala</div>
+			<div class="around" id="around"></div>
+			<div class="tex" id="tex">0%</div>
+		</div>
+		<input type="button" id="bt1" value="进度增加10%">
+	</body>
+</html>
+<script type="text/javascript">
+	var j = 0, t = 0, r = 0, w = 0; // 进度条 百分比 角度 传送
+	// var tt = 0;
+	document.getElementById("bt1").onclick = function(){
+		
+		// if(tt){
+		// 	return;
+		// }
+		document.getElementById("bt1").disabled = true;
+		var temp1 = 0, temp2 = 0;
+		// console.info("hh");
+		var timer1 = setInterval(function(){
+			// tt += 1;
+			j += 1;
+			r += 30;
+			w += 50;
+			temp1 += 1;
+			if( temp1 == 30){
+				clearInterval(timer1);
+				// tt = 0;
+				document.getElementById("bt1").disabled = false;
+			}
+			if( w >= 300 ){
+				w = 0;
+			}
+			document.getElementById("tex2").style.right = w +'px';
+			document.getElementById("bar_in").style.width = j+'px';
+			document.getElementById("around").style.transform = "rotate("+r+"deg)";
+			
+		}, 40);
+		
+		var timer2 = setInterval(function(){
+			t += 1;
+			temp2 += 1;
+			if( temp2 == 10){
+				clearInterval(timer2);
+			}
+			document.getElementById("tex").innerText = t+'%';
+		}, 100);
+		if( j >= 300 ){
+			j = 0;
+			t = 0;
+		}
+		
+		// j = j + 30;
+		// t += 10;
+		// document.getElementById("bar_in").style.width = j+'px';
+		// document.getElementById("tex").innerText = t+"%";
+	}
+</script>

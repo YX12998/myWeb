@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JQuery-1</title>
+		<script src="jquery-2.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<p>白日依山尽</p>
+		<p>黄河入海流</p>
+		<p>欲穷千里目</p>
+		<p>回家看屏幕</p>
+		<input type="button" value="bt1">
+	</body>
+</html>
+<script type="text/javascript">
+	console.info( jQuery );
+	console.info( $ );
+
+	//jquery的第一段代码 - this - 相关事件源和$(事件)
+	
+	// jquery的ready入口 1  $(document).ready(函数)
+	// $(document).ready(function(){
+	// 	console.info(2);
+	// 	$("p").click(function(){
+	// 		$(this).hide();
+	// 	});
+	// });
+	
+	// jquery的ready入口 2  $(函数)
+	$(function(){
+		$("p").click(function(){
+			// alert("哈哈");
+			// console.info(e.target);
+			// e.target.hide(); // 报错, 事件源不支持hide()方法, 这是$方法
+			// e.target.style.display = "none"; // 原生隐藏事件源
+			// $(e.target).hide(1000);
+			$(this).hide(1000); // 隐藏 时间为1s
+		});
+		
+	// 	$("input").click(function(){
+	// 		$.when( $("p:first").hide(1000) ).done(
+	// 			$("p:last").hide(1000)
+	// 		); // 无法控制渲染的时间
+	// 		console.info(this.disabled = true);
+	// 	});
+	});
+	
+	// document.getElementsByTagName("input")[0].onclick = function(){
+	// document.getElementsByTagName("input")[0].disabled = true;
+	// }	
+	$(function(){
+		$("input").click(function(e){
+			//e.target.disabled = true;
+			this.disabled = true;
+		});
+	});
+	
+	// 基本语法 $(selector).action()
+	
+</script>

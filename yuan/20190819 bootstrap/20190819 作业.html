@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+		<!-- 兼容IE9 -->
+		 <!-- <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> -->
+         <!-- <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script> -->
+		<style type="text/css">
+			body{
+				background: lightgray;
+			}
+			.inform{
+				font-size: 48px;
+				text-align: center;
+				padding: 80px;
+			}
+			.lie{
+				background: firebrick;
+				min-height: 60px;
+				padding: 0;
+				margin: 20px;
+			}
+
+			.lie2{
+				background: orange;
+				height: 60px;
+				border: 1px solid gray;
+				line-height: 60px;
+				padding: 0 15px 0 15px;
+			}
+			input{
+				min-height: 50px;
+				border: 1px solid darkgray;
+				margin: 15px 0 0 10%;
+				width: 80%;
+				padding: 0 15px 0 15px;
+			}
+			button{
+				min-height: 60px;
+				width: 100%;
+				margin-top: 60px;
+				background-color: orange;
+				border: 0;
+			}
+			h1{
+				height: 30px;
+			}
+			img{
+				display: block;
+				width: 200px;
+				border: 1px solid orange;
+				border-radius: 20px;
+				margin: 20px auto;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="inform">个人信息</div>
+		<div class="container">
+			<div class="row">
+				
+				
+				<div class="col-sm-4">
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1 lie">
+							<h1></h1>
+							<input type="text" placeholder="请输入旧密码">
+							<br>
+							<input type="text" placeholder="请输入新密码">
+							<br>
+							<button type="button">修改密码</button>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="col-sm-4">
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1 lie">
+							<div class="row">
+								<img src="images/b1.jpg" alt="">
+							</div>
+							<div class="row">
+								<div class="col-sm-5 col-sm-offset-1 lie2">粉丝1.2万</div>
+								<div class="col-sm-5 lie2">关注100</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="col-sm-4">
+					<div class="col-sm-10 col-sm-offset-1 lie">
+						<div class="row lie2">个人资料</div>
+						<div class="row lie2">消息</div>
+						<div class="row lie2">设置</div>
+						<div class="row lie2">退出登录</div>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="jquery-2.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>

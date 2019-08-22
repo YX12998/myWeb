@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>window相关2</title>
+	</head>
+	<body>
+		我是页面3
+		<input type="button" id="bt001" value="关闭窗口" />
+		<br>
+		<input type="button" id="goBack" value="回上一页" />
+	</body>
+</html>
+<script type="text/javascript">
+	window.name = "xiner333";
+	document.getElementById("bt001").onclick = function(){
+		window.opener.close();//不确定
+	}
+	document.getElementById("goBack").onclick = function(){
+		// window.history.go(-1);
+		window.history.back();
+
+	}
+	function getUrlP(){
+		var parameters = window.location.search;
+		if( !parameters ){
+			return {};
+		}
+		parameters.replace("?", "");
+		var pars = [];
+		pars = parameters.split("&");
+		for(var i = 0; i<pars.length; i++){
+			var temp1 = pars[i].split("=");
+			parObj[ temp1[0] ] = temp[1];
+			
+		}
+		console.info(pars);
+		return parObj;
+	}
+	var parametersFromURL = getUrlP();
+	console.info( parametersFromURL.name );
+	document.write("<br>欢迎您" + parametersFromURL.name);
+</script>

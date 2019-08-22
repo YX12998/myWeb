@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background-color: #000;
+			}
+
+			.radial {
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				background-color: black;
+				/* background-image: -webkit-radial-gradient(
+				yellow 100%, 
+				black 0%); */
+				box-shadow: yellow 0 0 0px 0px;
+				margin: 200px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="bt1" value="开灯">
+		<input type="button" id="bt2" value="关灯">
+		<div class="radial" id="box1"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	document.getElementById("bt1").onclick = function() {
+		document.getElementById("bt2").disabled = "true";
+		document.getElementById("bt1").disabled = "true";
+
+		r = 0;
+		w = 0;
+		t = 0;
+		var timer1 = setInterval(function() {
+			t=t+1;
+			if (w < 1000) {
+				w = w + 20;
+			}
+			
+			if (r < 100) {
+				r = r + 2;
+			}else{
+				clearInterval(timer1);
+
+			}
+			if(t > 50){
+				document.getElementById("bt2").disabled = false;
+				document.getElementById("bt1").disabled = false;
+
+			}
+			document.getElementById("box1").style.boxShadow = "yellow 0px 0px "+w+"px "+w+"px";
+			document.getElementById("box1").style.backgroundImage = "-webkit-radial-gradient" + "(yellow 100%,black " + r +"%)";
+			console.info(t);
+			
+		}, 50);
+		
+		
+
+		
+	}
+
+
+	document.getElementById("bt2").onclick = function() {
+		document.getElementById("bt2").disabled = "true";
+		document.getElementById("bt1").disabled = "true";
+		c = 100;
+		t=0;
+		var timer2 = setInterval(function() {
+		t++;
+			if (c) {
+				c = c - 2;
+			}else{
+				clearInterval(timer2);
+			}
+			document.getElementById("box1").style.boxShadow = "yellow 0px 0px 0px 0px";
+			document.getElementById("box1").style.backgroundImage = "-webkit-radial-gradient" + "(yellow 0%,black " + c +"%)";
+			if(t > 50){
+				document.getElementById("bt2").disabled = false;
+				document.getElementById("bt1").disabled = false;
+			
+			}
+		}, 50);
+
+	}
+</script>

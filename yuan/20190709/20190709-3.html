@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom-3 rainFall</title>
+		<style>
+			body{
+				position:relative;
+				background-color: #000;
+			}
+			.rain{
+				position: absolute;
+				background-color: skyblue;
+				border: 1px solid skyblue;
+				border-radius: 50%;
+				width: 0px;
+				height: 40px;
+				left: 20%;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div class="rain"></div> -->
+	</body>
+</html>
+<script type="text/javascript">
+	var rainCount = 0;//当前雨滴数量
+	var rainMax = 600;//雨滴总数量
+	function doRainFall(){
+		if(rainCount>=rainMax){
+			return;
+		}
+		var rainFall = document.createElement("div");//创建div
+		rainFall.setAttribute("class","rain");
+		document.body.appendChild(rainFall);
+		rainFall.style.top = "0px";
+		rainFall.style.left = Math.random()*100+"%";
+		document.body.appendChild(rainFall);
+		rainCount+=1;
+		
+		var rainTimer = setInterval(function(){
+			// var allRains = document.getElementsByClassName("rain");
+			// for(var i = 0;i<allRains.length;i++){
+			// 	var newTop = rainFall.style.top.replace("px","");
+			// 	newTop = parseFloat(newTop);
+			// 	newTop+=10;
+			// 	console.info();
+			// 	rainFall.style.top = newTop+"px";
+			// }
+			
+			var newTop = rainFall.style.top.replace("px","");
+			newTop = parseFloat(newTop);
+			newTop+=1;
+			//落地时让他消失
+			if(newTop>=800){
+				rainFall.remove();
+				rainCount-=1;
+				clearInterval(rainTimer);
+			}
+			rainFall.style.top = newTop+"px";
+
+		},1)
+	}
+	setInterval(function(){
+		doRainFall();
+	},60);
+
+</script>

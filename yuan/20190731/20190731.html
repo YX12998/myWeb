@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.linear-gradient{
+				width: 300px;
+				height: 300px;
+				background-image: -webkit-linear-gradient(right top, red 30%, blue 60%, #16104b 90%);
+			}
+			.radial{
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				background-image: -webkit-radial-gradient(
+				greenyellow 50%, 
+				yellow 15%, 
+				green 100%);
+				box-shadow: black 0 0 400px 400px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="linear-gradient"></div>
+		<div class="radial" id="box1"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var r = 10;
+	var w = 50;
+	var flag1 = false;
+	setInterval(function(){
+		if(r>100){
+			flag1 = false;
+		}
+		if(r<10){
+			flag1 = true;
+		}
+		if(flag1){
+			r+=6;
+			w-=6;
+		}else{
+			r-=6;
+			w+=6;
+		}
+		console.info(r);
+		document.getElementById("box1").style.boxShadow = "black 0px 0px "+r+"px";
+		document.getElementById("box1").style.backgroundImage = "-webkit-radial-gradient"+"(greenyellow "+w+"%,yellow "+w+"%,green "+r+"%)";
+	},50);
+</script>

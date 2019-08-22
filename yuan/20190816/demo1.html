@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+	</body>
+</html>
+<script type="text/javascript">
+	var songs = [{
+			name: "忘情水",
+			singer: "刘德华",
+			total: 80
+		},
+		{
+			name: "只因你太美",
+			singer: "蔡徐坤",
+			total: 6
+		},
+		{
+			name: "双节棍",
+			singer: "周杰伦",
+			total: 86
+		},
+		{
+			name: "双节棍",
+			singer: "周杰伦",
+			total: 86
+		}
+	];
+	// 
+	// console.info(songs[1].name);
+	// console.info(songs[1].singer);
+	for (var i = 0; i < songs.length; i++) {
+		if (songs[i].singer == "蔡徐坤") {
+			console.info(songs[i].name);
+		}
+		if ((songs[i].singer).indexOf("蔡") >= 0) {
+			console.info(songs[i].name);
+		}
+	}
+	
+	var song01 = {
+			name: "忘情水",
+			singer: "刘德华",
+			total: 90,
+			old: function(){
+				console.info(this);
+			},
+			perfect: {
+				ok: function(){
+					// if(this.total >= 80){
+					if(song01.total >= 80){
+						console.info("优秀");
+						
+					}else{
+						console.info("不优秀");
+					}
+				},
+				average: function(){
+					
+				}
+			}
+	}
+	// var songs02 = Object.create(songs01);
+	// console.info(songs02);
+	
+	// a = songs01.old
+	a = function(){
+		console.info(this);
+	}
+	
+	// 固化, 固定变量
+	var o = {
+	  f1: function() {
+	    console.log(this);
+	    var that = this; // 固化
+	    var f2 = function() {
+	      console.log(that);
+	    }();
+	  }
+	}
+	
+	o.f1()
+	
+	
+</script>

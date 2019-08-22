@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单的前导知识</title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="https://www.baidu.com/s" autocomplete="on" method="get" name="form01">
+			<p>
+				密码框: <input type="password" name="密码框" />
+			</p>
+			<p>
+				单选按钮radio: <input type="radio" name="单选按钮" />
+			</p>
+			<p>
+				性别: <br>
+				男:<input type="radio" name="性别" value="男" />
+				&nbsp;
+				女:<input type="radio" name="性别" value="女" />
+				&nbsp;
+				不详:<input type="radio" name="性别" value="不详" checked="checked" />
+			</p>
+			<p>
+				兴趣爱好:&nbsp;&nbsp;
+				唱<input type="checkbox" name="复选框" id="" value="唱">
+				跳<input type="checkbox" name="复选框" id="" value="跳">
+				rap<input type="checkbox" name="复选框" id="" value="rap">
+				篮球<input type="checkbox" name="复选框" id="" value="篮球">
+
+			</p>
+			<p>
+				复选框: <input type="checkbox" name="复选框" value="A" />
+			</p>
+			<p>
+				range: <input type="range" name="" id="" value="range">
+			</p>
+			<p>
+				range: <input type="file" name="file" id="" value="range">
+			</p>
+			<p>
+				<input type="hidden" name="隐藏域" value="隐藏域" />
+			</p>
+			textarea: <textarea name="texarea" rows="6" cols="60">
+				type的其他类型: url, email, number, image, file, hidden, range
+			</textarea>
+
+			<p>
+				百度一下:<input type="text" name="wd" id="" value="" />
+			</p>
+			<hr>
+
+			<p>
+				<input type="submit" name="" id="" value="提交" />
+				<input type="reset" name="" id="" value="重置" />
+			</p>
+		</form>
+
+	</body>
+</html>
+<script type="text/javascript">
+	// setInterval(function(){
+	// 	var xsx = $.ajax({
+	// 		url: "https://www.baidu.com/s",
+	// 		data:{
+	// 			wd: new Date().getTime() 
+	// 		},
+	// 		dataType:'json',//服务器返回json格式数据
+	// 		type:'get',//HTTP请求类型
+	// 		timeout:10000,//超时时间设置为10秒；
+	// 		success:function(data){
+	// 			
+	// 		},
+	// 		error:function(xhr,type,errorThrown){
+	// 			
+	// 		}
+	// 	});
+	// }, 1000);
+</script>

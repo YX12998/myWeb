@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title></title>
+		<style type="text/css">
+			#targetID {
+				width: 120px;
+				height: 180px;
+				border: 120px solid papayawhip;
+				border-radius: 50%;
+				background-color: darkorange;
+				float: right;
+				text-align: center;
+				position: absolute;
+				left: 260px;
+				top: 0;
+			}
+
+			#menu1 input {
+				width: 160px;
+			}
+
+			#menu1 li {
+				margin-bottom: 10px;
+			}
+
+			.oneStudent {
+				
+				background-color: beige;
+				color: aqua;
+
+			}
+
+			/* div:last-of-type {
+				color: greenyellow;
+				background-color: orange;
+			} */
+
+			.students {
+				background-color: #fff;
+				width: 600px;
+				height: 300px;
+				overflow-y: scroll;
+			}
+			.oneStudentxxx:hover{
+				background-color: royalblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu1">
+			<ul>
+				<li><input type="button" id="bt1" value="hide" /></li>
+				<li><input type="button" id="bt2" value="show" /></li>
+				<li><input type="button" id="bt3" value="toggle" /></li>
+				<li><input type="button" id="bt4" value="闪耀" /></li>
+				频率: <input type="text" id="text1" /><br>
+				时间: <input type="text" id="text2" />
+				<li><input type="button" id="bt5" value="停止" /></li>
+				<li><input type="button" id="bt6" value="滑动出现" /></li>
+				<li><input type="button" id="bt7" value="滑动隐藏" /></li>
+				<li><input type="button" id="bt8" value="滑动显隐" /></li>
+				<li><input type="button" id="bt9" value="相对动画" /></li>
+				<li><input type="button" id="bt10" value="ajax" /></li>
+
+			</ul>
+		</div>
+
+		<div class="target" id="targetID"></div>
+		<div class="students" id="students"></div>
+		<!-- <p></p> -->
+	</body>
+</html>
+<script type="text/javascript">
+	//隐藏、显示、切换，滑动，淡入淡出，以及动画
+	$(function() {
+
+		// hide() 和 show() 可以带参数, 表示执行这个动画的毫秒数
+		$("#bt1").click(function() {
+			$("#targetID").hide(1000);
+		});
+
+		$("#bt2").click(function() {
+			$("#targetID").show(1000);
+		});
+
+		$("#bt3").click(function() {
+			$("#targetID").toggle(proc);
+		});
+
+		// 课堂练习 - 实现闪烁 -- 在hide和show之间切换, 产生一个闪烁效果
+		// 计时器 - 至少三种方法
+		var timer1 = 0;
+		$("#bt4").click(function() {
+			if (timer1) {
+				clearInterval(timer1);
+				$("#targetID").stop();
+			}
+			var hz = $("#text1").val();
+			hz = parseInt(hz);
+			var proc = $("#text2").val();
+			proc = parseInt(proc);
+			if (!hz) {
+				hz = 500;
+			}
+			// count = 0;
+			timer1 = setInterval(function() {
+				// count1 ++;
+				// if(count1 > 9){
+				// 	clearInterval(timer1);
+				// }
+				$("#targetID").toggle(proc);
+			}, hz);
+
+		});
+		$("#bt5").click(function() {
+			if (timer1) {
+				clearInterval(timer1);
+				$("#targetID").stop();
+			}
+		});
+
+		// 向下出现 - 针对隐藏的元素
+		$("#bt6").click(function() {
+			$("#targetID").slideDown();
+		});
+
+		// 向上收起 - 针对非隐藏的元素
+		$("#bt7").click(function() {
+			$("#targetID").slideUp();
+		});
+
+		$("#bt8").click(function() {
+			$("#targetID").slideToggle(200);
+
+		});
+
+		//关于动画的补充 - 使用相对值
+		$("#bt9").click(function() {
+			$("#targetID").animate({
+				left: "+=20px",
+				top: "+=10px"
+			}, 100, function() {});
+		});
+
+		// 要求, 数据正确请回完毕, 在页面上显示以下内容
+		// 姓名: xxx  编号: xxx // 点中后, 高亮
+		// 你自己的名字高亮
+		// 引起error分支的原因是目标json文件中, 属性名没加""
+		$("#bt10").click(function() {
+
+			$.ajax({
+				url: "student.json", // 请求地址
+				data: {}, // 向后台传递数据
+				type: "get", // 请求方法 * get/post/put/delete
+				dataType: "json", // text/html/xml...
+
+				success: function(res) {
+
+					// $("p").load("student.json");
+
+					// for (var x in res) {
+					// 	for (var i = 0; i < res[x].length; i++) {
+					// 		console.info(res[x][i]);
+					// 		$("p").append(res[x][i].name);
+					// 		$("p").append(res[x][i].id);
+					// 		$("p").append("<br>");
+					// 		$("p").append("<br> <div class='oneStudent'>" +
+								// res[x][i].name + "---" + res[x][i].id + "</div>")
+					// 	}
+					// }
+					handleRes(res);
+
+				},
+				error: function(res) {
+					alert("");
+					console.info(res);
+				},
+				//
+				complete: function() {
+
+				}
+			});
+
+
+
+		});
+		function handleRes(res) {
+			var allStudent = res.all;
+			console.info(allStudent);
+			for (var i = 0; i < allStudent.length; i++) {
+				if (allStudent[i].id == 29) {
+					$("#students").append("<br> <div class='oneStudent'>" + allStudent[i].name + "---" + allStudent[i].id +
+						"</div>");
+				} else {
+					$("#students").append("<br> <div class='oneStudentxxx'>" + allStudent[i].name + "---" + allStudent[i].id +
+						"</div>");
+				}
+			}
+		};
+
+
+	});
+
+	
+
+	// 1. xml格式 html与xml格式类似
+	// 2. 异步
+	// 3. 什么是 AJAX？
+	// AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
+	// 异步陷阱
+</script>

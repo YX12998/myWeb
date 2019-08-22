@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图标库的使用1</title>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css" />
+		<style type="text/css">
+			ul {
+				margin: 0;
+				padding: 0;
+			}
+
+			.list-group-item {
+				font-size: 24px;
+				color: brown;
+			}
+
+			.audioPlayer {
+				position: relative;
+				margin-left: 10px;
+				border: 1px solid blue;
+				width: 320px;
+				min-width: 320px;
+				background-color: gold;
+				height: 400px;
+				float: left;
+			}
+
+			.contralB {
+				width: 100%;
+				min-width: 320px;
+				height: 40px;
+				border: 1px solid #A52A2A;
+				margin-top: 360px;
+				text-align: center;
+				background-color: black;
+			}
+
+			.contralB button {
+				margin-left: 12px;
+				margin-right: 12px;
+				margin-top: 8px;
+				color: black;
+			}
+
+			.playerContent {
+				width: 1000px;
+				height: 400px;
+				margin: 0 auto;
+				border: 4px solid firebrick;
+				background-color: dimgray;
+			}
+
+			#faceImg {
+				width: 200px;
+				height: 200px;
+				border: 1px solid saddlebrown;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -100px;
+				margin-left: -100px;
+				border-radius: 50%;
+				background: url(服不服.png);
+			}
+
+			/* 			#faceImg-center {
+				width: 40px;
+				height: 40px;
+				border: 1px solid saddlebrown;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -20px;
+				margin-left: -20px;
+				border-radius: 50%;
+				background-color: gold;
+			} */
+
+			#playList {
+				min-width: 300px;
+				width: 300px;
+				float: left;
+				margin-left: 10px;
+				height: 100%;
+				background-color: gainsboro;
+				overflow: scroll;
+			}
+
+			#playList li {
+				color: darkorange;
+				list-style: none;
+				margin-top: 20px;
+
+			}
+
+			.selectedSong {
+				color: red !important;
+				font-size: 20px;
+				font-weight: 500;
+			}
+		</style>
+	</head>
+	<body>
+		<i class="fa fa-camera-retro"></i> fa-camera-retro
+		<i class="fa fa-camera-retro fa-lg"></i> fa-lg
+		<i class="fa fa-camera-retro fa-2x"></i> fa-2x
+		<i class="fa fa-camera-retro fa-3x"></i> fa-3x
+		<i class="fa fa-camera-retro fa-4x"></i> fa-4x
+		<i class="fa fa-camera-retro fa-5x"></i> fa-5x
+		<hr>
+
+		<div class="list-group">
+			<a class="list-group-item" href="#"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
+			<a class="list-group-item" href="#"><i class="fa fa-book fa-fw"></i>&nbsp; Library</a>
+			<a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw"></i>&nbsp; Applications</a>
+			<a class="list-group-item" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
+		</div>
+		<hr>
+
+		<ul class="fa-ul">
+			<li><i class="fa-li fa fa-linux"></i>List icons</li>
+			<li><i class="fa-li fa fa-check-square"></i>can be used</li>
+			<li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+			<li><i class="fa-li fa fa-square"></i>in lists</li>
+		</ul>
+		<hr>
+		<div class="playerContent">
+			<div id="playList">
+				<ul class="fa-ul">
+					<!-- <li class="selectedSong"><i class="fa-li fa fa-envira"></i>我是静态的</li> -->
+				</ul>
+			</div>
+			<div class="audioPlayer">
+
+				<div id="faceImg">
+					<div id="faceImg-center"></div>
+				</div>
+				<div class="contralB">
+					<button type="button" onclick="changeSong(-1)"><i class="fa fa-backward fa-lg"></i></button>
+					<button type="button" id="pauseMusic"><i class="fa fa-pause fa-lg"></i></button>
+					<button type="button" id="playMusic"><i class="fa fa-play fa-lg"></i></button>
+					<button type="button" onclick="changeSong(1)"><i class="fa fa-forward fa-lg"></i></button>
+				</div>
+			</div>
+
+		</div>
+
+		<audio src="" id="audioPlayer01" controls="controls">
+
+		</audio>
+
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+
+		intPage(); // 初始化页面
+		// initEvent(); // 初始化事件
+
+	});
+
+	function loadMusicList(page) {
+		// 先不要page参数 , 只想说明扩展逻辑
+		$.ajax({
+			url: "myData/musicList.json",
+			// data:{},
+			type: "GET",
+			dataType: "json",
+			success: function(res) {
+				console.info(res);
+				if (res.currList) {
+					fillMusicList(res.currList);
+				}
+
+			},
+			error: function(a, b) {
+				console.info("error");
+				console.info(a);
+				console.info(b);
+			},
+			complete: function() {
+
+			}
+
+		});
+	}
+
+	// initEvent(){
+	// 	
+	// }
+	Img = 1;
+
+	function changeSong(parm) {
+		faceRoll(true);
+		// console.info(_allSongs[c].songImg);
+		changeFace(_allSongs[Img].songImg);
+		Img++;
+		if (Img == _allSongs.length) {
+			Img = 0;
+		}
+		var currSongIndex = null;
+		for (var i = 0; i < _allSongs.length; i++) {
+
+			if (_currSong.songId == _allSongs[i].songId) {
+				currSongIndex = i;
+				break;
+			}
+
+		}
+		if (currSongIndex == null) {
+			return;
+		}
+		if (parm > 0) {
+			//下一首
+			currSongIndex += 1;
+			if (currSongIndex > _allSongs.length - 1) {
+				currSongIndex = 0;
+			}
+		} else {
+			//上一首
+			currSongIndex -= 1;
+			if (currSongIndex < 0) {
+				currSongIndex = _allSongs.length - 1;
+			}
+		}
+		//修改全局变量,记录当前的歌曲发生的变化
+		_currSong = _allSongs[currSongIndex];
+		var player = document.getElementById("audioPlayer01");
+		player.src = _currSong.songUrl;
+
+		player.play();
+		// 高亮
+		$(".selectedSong").removeClass("selectedSong");
+		$("#" + _currSong.songId).addClass("selectedSong");
+	}
+
+
+	function changeFace(toImg) {
+		$("#faceImg").stop();
+		$("#faceImg").animate({
+			width: "50px",
+			height: "50px",
+			marginTop: "-25px",
+			marginLeft: "-25px"
+
+		}, "normal", function() {
+			$("#faceImg").animate({
+				top: "-10%",
+				opacity: "0"
+			}, "normal", function() {
+				$("#faceImg").css({
+					width: "200px",
+					height: "200px",
+					marginTop: "-100px",
+					marginLeft: "-100px",
+					opacity: "1",
+					top: "50%",
+					background: "url(" + toImg + ")"
+				})
+			});
+		});
+
+	}
+
+	// 注册事件
+	// 点击播放按钮
+	$("#playMusic").click(function() {
+		// 播放当前列表音乐
+		if (_currSong && _currSong.songUrl) {
+			var player = document.getElementById("audioPlayer01");
+			// 容错
+			// if(player.src != _currSong.songUrl){
+			// 	player.src = _currSong.songUrl;
+			// }
+			if (player.outerHTML.indexOf(_currSong.songUrl) < 0) {
+				player.src = _currSong.songUrl;
+			}
+			// player.src = _currSong.songUrl;
+			player.play();
+		}
+		// 更换图片
+
+		// 开始旋转
+		faceRoll(true);
+	});
+
+	// 点击暂停按钮
+	$("#pauseMusic").click(function() {
+		// 暂停
+		var player = document.getElementById("audioPlayer01");
+		player.pause();
+		// 停止旋转
+		faceRoll(false);
+
+	});
+
+
+	//点击下一首事件
+
+
+	// 初始化页面
+	function intPage() {
+		_currSong = null;
+		loadMusicList(0); // 默认加载第一页
+	}
+
+
+	//显示音乐列表
+	function fillMusicList(currList) {
+		// 将第一首歌存到全局变量
+		_allSongs = currList;
+		_currSong = currList[0];
+		// $("#playList").empty();
+		for (var i = 0; i < currList.length; i++) {
+			var newLi = $('<li id="' + currList[i].songId + '"><i class="fa fa-envira"></i>' +
+				currList[i].songName + '</li>');
+
+			//默认选中当前的第一首歌
+			if (i == 0) {
+				$(newLi).addClass("selectedSong");
+			}
+
+			$("#playList ul").append(newLi);
+
+		}
+	}
+
+
+	// 转
+	var _timerFace = null;
+
+	function faceRoll(parm) {
+		if (_timerFace) {
+			clearInterval(_timerFace);
+		}
+		if (parm) {
+			// var = deg = 0; 这样每次都复位, 以下代码进行优化
+			var deg = $("#faceImg")[0].style.transform;
+			deg = deg.replace("rotate(", "");
+			deg = deg.replace("deg(", "");
+			deg = parseInt(deg) || 0;
+
+			_timerFace = setInterval(function() {
+				deg += 2;
+				// 不能让他无限自增
+				if (deg > 360) {
+					deg = 0;
+				}
+				$("#faceImg").css({
+					transform: "rotate(" + deg + "deg)"
+				});
+			}, 40);
+		}
+	}
+</script>

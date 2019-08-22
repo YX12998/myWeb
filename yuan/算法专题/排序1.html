@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>冒泡排序</title>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+
+			.studentTable {
+				width: 400px;
+				background-color: yellowgreen;
+				border: 0;
+				/* min-height: 200px; */
+			}
+
+			.studentTable th {
+				color: red;
+				height: 24px;
+				border: 0;
+			}
+			.studentTable td {
+				height: 24px;
+				width: 60px;
+				border: 0;
+			}
+
+			.studentTable tr {
+				color: black;
+				height: 24px;
+			}
+			.aa{
+				width: 400px;
+				font-size: 24px;
+				color: blue;
+				background-color: orange;
+			}
+			
+/* 			#studentList{
+				width: 600px;
+				height: 600px;
+				background-color: lightgray;
+			} */
+			.police{
+				width: 120px;
+				height: 22px;
+				border: 1px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="studentList">
+			<table id="table1" class="studentTable" border="" cellspacing="" cellpadding="">
+				<div class="aa">十大杰出青年评审表</div>
+				<tr>
+					<th onclick="sortArrByParm('' , 'name')">姓名</th>
+					<th onclick="sortArrByParm('' , '')">年龄</th>
+					<th onclick="sortArrByParm('' , 'grade')">级别</th>
+					<th>排序</th>
+				</tr>
+				<!-- 				<tr>
+					<td>yuan</td>
+					<td>22</td>
+					<td>zg</td>
+					<td>1</td>
+				</tr> -->
+			</table>
+			<table id="table2" class="studentTable" border="" cellspacing="" cellpadding="">
+				
+			</table>
+
+		</div>
+		<p>
+			请选择一个警员, 查看其信息
+		</p>
+		<select class="police" id="police">
+			<option value ="">警员</option>
+		</select>
+		<input type="text" id="xianshi">
+
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		loadData();
+		_allPolice = [];
+	});
+
+	// 使用ajax请求data,json文件的数据, 并将其保存到全局中
+	
+	function loadData() {
+		$.ajax({
+			url: "data.json",
+			// data:{},
+			type: "GET",
+			dataType: "json",
+			success: function(res) {
+				console.info(res);
+				_data = res;
+				sortArrByParm();
+				// fillStudents(_data.allStudents);
+				_data2 = res.department;
+				// countPeople(_data2);
+				countPoliceFromArray(_data2);
+				fillPoliceSelect();
+
+			},
+			error: function(a, b) {
+				console.info("error");
+				// console.info(a);
+				// console.info(b);
+			},
+			complete: function() {
+
+			}
+
+		});
+
+	}
+	
+
+	// 对某个对象数组进行排序, 依据某个属性, 返回值, 排序后的数组
+	function sortArrByParm(arr, attr) {
+		// 测试代码
+		arr = arr || _data.allStudents;
+		attr = attr || "age";
+		
+		for (var i = 0; i < arr.length - 1; i++) {
+			for (var j = 0; j < arr.length - 1 - i; j++) {
+				if (arr[j][attr] > arr[j + 1][attr]) {
+					var temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+		}
+		_data.allStudents = arr; // 改变全局变量
+		fillStudents(arr);
+		
+		// 冒泡排序算法
+		// for (var i = 0; i < arr.length - 1; i++) {
+		// 	for (var j = 0; j < arr.length - 1 - i; j++) {
+		// 		if (arr[j].age > arr[j + 1].age) {
+		// 			var temp = arr[j];
+		// 			arr[j] = arr[j + 1];
+		// 			arr[j + 1] = temp;
+		// 		}
+		// 	}
+		// }
+		// fillStudents(arr);
+
+		// return new array
+	}
+
+	// 将排序后的数据,呈现到页面上
+	function fillStudents(studens) {
+		$("#table2").empty();
+		for (var i = 0; i < studens.length; i++) {
+			var trString = $('<tr><td>' + studens[i].name + '</td><td>' + studens[i].age +
+			 '</td><td>' + studens[i].grade + '</td><td>' + (i+1) + '</td></tr>');
+			$("#table2").append(trString);
+		}
+	}
+	
+	// 遍历警员
+	// k = 0;
+	// function countPeople(a2){
+	// 	a2 = a2 || _data2;
+		// for(var i = 0; i<a2.length; i++){
+		// 	if(a2[i].leader){
+		// 		k = k+1;
+		// 		
+		// 	}
+		// 	if(a2[i].menbers){
+		// 		var p = a2[i].menbers;
+		// 		for(var j = 0; j<p.length; j++){
+		// 			if(p[j].id){
+		// 				k = k+1;
+		// 			}
+		// 		}
+		// 		
+		// 	}
+		// }
+		
+		// console.info("警员共"+k+"人");
+	// }
+	
+	
+	// 笔记1: 判断一个对象是否具有某属性 hasOwnProperty( attr ) --true/false
+	// 笔记2: 判断一个对象是否是数组 变量名  instanceof Array --true/false
+	// 笔记3: 判断一个变量是否是对象 -- typeof(policeArr[x]) == 'object'
+	
+	// 递归函数  递归函数的一个重要特征 一次调用后可自调用
+	function countPoliceFromArray( policeArr ){
+		for( var x in policeArr ){
+			if( policeArr[x].hasOwnProperty("id") ){
+				_allPolice.push(policeArr[x]);
+				// allPolice += 1;
+			}
+			if(typeof(policeArr[x]) == 'object'){
+				countPoliceFromArray(policeArr[x]);
+			}
+		}
+		
+	}
+	function fillPoliceSelect(){
+		for(var i =0; i<_allPolice.length;i++){
+			document.getElementById("police").innerHTML +=
+			"<option value ="+ _allPolice[i].id +">"+ _allPolice[i].name +"</option>"
+		}
+		
+	}
+
+	// 点选select标签, 在右边的input 中显示警衔和警号
+	$("#police").change(function(){
+		// console.info($("#police").val());
+		var a = $("#police").val();
+		for(var i = 0; i<_allPolice.length; i++){
+			if(a == _allPolice[i].id){
+				$("#xianshi").val(_allPolice[i].rank+"  "+_allPolice[i].id);
+			}
+		}
+		
+	})
+	
+</script>

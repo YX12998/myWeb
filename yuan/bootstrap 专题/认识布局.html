@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>认识布局容器</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+	</head>
+	<body>
+		<div class="container" style="height: 40px; background: #6528f9;"></div>
+		<div class="container-fluid" style="height: 40px; background: #ff8526;"></div>
+		
+		
+		<nav class="navbar navbar-default" role="navigation">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#hh" aria-expended="false">
+				<span class="sr-only">汉堡</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			 </button>
+
+			<div class="navbar-header">
+				<a class="navbar-brand">首页</a>
+			</div>
+			
+			<div id="hh" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">信儿</a></li>
+					<li><a href="#">行动</a></li>
+					<li><a href="#">中阿</a></li>
+				</ul>
+			</div>
+			
+		</nav>
+	</body>
+</html>
+<script type="text/javascript" src="jquery-2.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>

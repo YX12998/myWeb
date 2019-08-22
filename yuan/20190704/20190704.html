@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//严格说属性名是固定的,是字符串
+	var ob01 = {
+		"name": "fang",
+		"age": 33,
+		"long": "3.5inc",
+		"weight": "66kg",
+		"title": "广西省十大杰出",
+		"secTitle": "优秀"
+	};
+
+	ob01.fullName = "方文韬";
+	delete ob01.secTitle;
+
+	for (var p in ob01) {
+		console.info(p + ":" + ob01[p]);
+	}
+
+	//课堂练习 在几个同学中 跳出分数大于80的人
+	var student1 = {
+		name: "li",
+		id: 165541,
+		grade: "大三",
+		unint: "三系一专业",
+		total: 70
+	};
+
+	var student2 = {
+		name: "wang",
+		id: 165542,
+		grade: "大三",
+		unint: "二系二专业",
+		total: 79
+	};
+
+	var student3 = {
+		name: "zhang",
+		id: 165543,
+		grade: "大三",
+		unint: "二系一专业",
+		total: 82
+	};
+
+	var student4 = {
+		name: "liu",
+		id: 165544,
+		grade: "大三",
+		unint: "三系一专业",
+		total: 70
+	};
+
+	var a = [student1, student2, student3, student4];
+	for (var i = 0; i < a.length; i++) {
+		if (a[i].total > 80) {
+			console.info(a[i]);
+		}
+	}
+
+	// for(var i=0;i<a.length;i++){
+	// 	if(a[i].unint == "三系二专业"){
+	// 		console.info(a[i].name+"的id为:" +a[i].id);
+	// 	}
+	// }
+
+	for (var i = 0; i < a.length; i++) {
+		if (a[i].unint.indexOf("二系") >= 0) {
+			console.info(a[i].name + "的id为:" + a[i].id);
+		}
+	}
+
+	//有10首歌,我想随机听
+	var song1 = {
+		name: "十七岁",
+		type: "pop",
+		auther: "刘德华",
+		index: 0,
+		total: 100
+	};
+	var song2 = {
+		name: "老鼠爱大米",
+		type: "pop",
+		auther: "李春鹏",
+		index: 1,
+		total: 98
+	};
+	var song3 = {
+		name: "两只老虎",
+		type: "baby",
+		auther: "赵珊",
+		index: 2,
+		total: 62
+	};
+	var song4 = {
+		name: "青花瓷",
+		type: "pop",
+		auther: "周杰伦",
+		index: 3,
+		total: 70
+	};
+	var song5 = {
+		name: "稻香",
+		type: "pop",
+		auther: "周杰伦",
+		index: 4,
+		total: 75
+	};
+	var song6 = {
+		name: "海阔天空",
+		type: "pop",
+		auther: "beyound",
+		index: 5,
+		total: 101
+	};
+	var song7 = {
+		name: "为你我受冷风吹",
+		type: "pop",
+		auther: "林忆莲",
+		index: 6,
+		total: 80
+	};
+	var song8 = {
+		name: "等你下课",
+		type: "pop",
+		auther: "周杰伦",
+		index: 7,
+		total: 86
+	};
+	var song9 = {
+		name: "只因你太美",
+		type: "pop",
+		auther: "蔡徐坤",
+		index: 8,
+		total: 0
+	};
+	var song10 = {
+		name: "冬天里的一把火",
+		type: "pop",
+		auther: "费翔",
+		index: 9,
+		total: 77
+	};
+		var song11 = {
+		name: "信儿",
+		type: "pop",
+		auther: "袁鑫",
+		index: 10,
+		total: 200
+	};
+
+
+	var songsList = [];
+	songsList.push(song1);
+	songsList.push(song2);
+	songsList.push(song3);
+	songsList.push(song4);
+	songsList.push(song5);
+	songsList.push(song6);
+	songsList.push(song7);
+	songsList.push(song8);
+	songsList.push(song9);
+	songsList.push(song10);
+	songsList.push(song11);
+
+
+	//写一个函数随机听歌,打乱顺序,输出新数组
+
+
+	var songsList3 = [];
+
+	function sui(song) {
+		while (songsList3.length < 10) {
+			var k = Math.floor(Math.random() * 10);
+			if (songsList3.indexOf(songsList[k]) == -1) {
+				songsList3.push(songsList[k]);
+			}
+		}
+		return songsList3;
+	}
+	console.info(sui(songsList));
+
+	//补充练习:交换数组两个元素的位置
+	var arr05 = ["y", "x"];
+	var arr06 = [];
+	arr06[0] = arr05[1];
+	arr06[1] = arr05[0];
+	console.info(arr06);
+
+	var arr007 = [5, 8, 9, 33, 4, 6, 44, 55];
+	for (var i = 0; i < arr007.length - 1; i++) {
+		for (var j = 0; j < arr007.length - 1 - i; j++) {
+			if (arr007[j] < arr007[j + 1]) {
+				var t = arr007[j];
+				arr007[j] = arr007[j + 1];
+				arr007[j + 1] = t;
+			}
+		}
+	}
+	console.info(arr007);
+
+	function aa(songsList) {
+		for (var i = 0; i < songsList.length - 1; i++) {
+			for (var j = 0; j < songsList.length - 1 - i; j++) {
+				if (songsList[j].total < songsList[j + 1].total) {
+					var t = songsList[j];
+					songsList[j] = songsList[j + 1];
+					songsList[j + 1] = t;
+				}
+			}
+		}
+		for (var i = 0; i < songsList.length; i++) {
+			songsList[i].pai= i+1;
+		}
+		return songsList;
+	}
+	console.info(aa(songsList));
+	
+	
+	var t1= setInterval(function(){
+		var now = new Date();
+		var year = now.getFullYear();
+		var month = now.getMonth();
+		var day = now.getDate();
+		var hour = now.getHours();
+		var minu = now.getMinutes();
+		var sec = now.getSeconds();
+		console.info( year+"年"+month+"月"+day+"日"+hour+"时"+minu+"分"+sec);
+		
+		console.info(now.toLocaleString());
+	},1000)
+	
+
+	setTimeout(function(){
+		clearInterval(t1);
+	},40000)
+	
+</script>

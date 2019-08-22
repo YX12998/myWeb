@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			a{
+				text-decoration: none;
+				color: black;
+			}
+			.music{
+				width: 800px;
+				height: 600px;
+				background-color: skyblue;
+				margin: 0 auto;
+			}
+			.menu{
+				width: 300px;
+				height: 600px;
+				background-color: greenyellow;
+				float: left;
+				position: relative;
+			}
+			.list{
+				width: 260px;
+				height: 500px;
+				position: absolute;
+				top: 40px;
+				left: 20px;
+			}
+			.list>div{
+				width: 260px;
+				height: 40px;
+				line-height: 40px;
+			}
+			.list>div a:hover{
+				font-size: 24px;
+				color: blue;
+			}
+			.face{
+				width: 500px;
+				height: 600px;
+				float: left;
+				position: relative;
+			}
+			.disk{
+				width: 300px;
+				height: 300px;
+				border: 60px solid black;
+				border-radius: 50%;
+				background-color: red;
+				position: absolute;
+				left: 40px;
+				top: 20px;
+			}
+			.ci{
+				width: 180px;
+				height: 1px;
+				border: 1px solid white;
+				position: absolute;
+				top: 230px;
+				left: 250px;
+			}
+			.pic{
+				width: 194px;
+				margin:56px;
+				border-radius: 50%;
+			}
+			.contral{
+				width: 300px;
+				height: 40px;
+				position: absolute;
+				bottom: 0;
+				text-align: center;
+				left: 100px;
+			}
+			.mus{
+				position: absolute;
+				bottom: 60px;
+				left: 100px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="music">
+			<div class="menu">
+				<div class="list">
+					<div id="song1" onclick="changeAudio(1)"><a href="#">读不读 -- du</a></div>
+					<div id="song2" onclick="changeAudio(2)"><a href="#">服不服 -- fu</a></div>
+					<div id="song3" onclick="changeAudio(3)"><a href="#">早上好 -- hao</a></div>
+				</div>
+			</div>
+			<div class="face">
+				
+				<div class="disk" id="disk">
+					
+					<img id="pic" class="pic" src="读不读.png" alt="">
+				</div>
+				
+				<audio id="audio1" class="mus" controls="controls" src="cc.MP3" ></audio>
+				
+				<div class="contral">
+					<input type="button"id="" value="上一首" />
+					<input type="button" onclick="playContral('pause')" id="" value="暂停" />
+					<input type="button" onclick="playContral('play')" value="播放" />
+					<input type="button"id="" value="下一首" />
+				</div>
+				<div class="ci"></div>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	
+		function changeAudio( audioSrc ){
+		if( !audioSrc ){
+			return;
+		}
+		switch( audioSrc ){
+			case 1:{
+				audioSrc = "cc.mp3";
+				break;
+			}
+			case 2:{
+				audioSrc = "001.mp3";
+				break;
+	
+			}
+			case 3:{
+				audioSrc = "cc.mp3";
+				break;
+	
+			}
+			default: {
+				break;
+			}
+		}
+		var nowAudio1 = document.getElementById("audio1");
+		nowAudio1.src = audioSrc;
+	}
+
+	function playContral( parm ){
+		var au01 = document.getElementById("audio1");
+		au01[parm]();
+	}
+	function playListGo( parm ){
+		if(!parm){
+			return;
+		}
+	}
+	
+	document.getElementById("audio1").onplaying = function(){
+		var reg = 0;
+		var timer1 = setInterval(function(){
+			reg += 1;
+			document.getElementById("disk").style.transform = "rotate("+reg+"deg)";
+			
+		},20);
+		
+		var stop = document.getElementById("audio1").paused;
+		if(stop){
+			clearInterval(timer1);
+			alert("aa")
+		}
+	};
+
+</script>

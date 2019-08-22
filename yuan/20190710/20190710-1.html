@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件</title>
+	</head>
+	<style>
+		body{
+			background-color: lavender;
+			
+		}
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.rain{
+			position: absolute;
+			background-color: white;
+			/* border: 1px solid skyblue; */
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			left: 20%;
+			top: 0;
+		}
+		.myButton:hover{
+			background-color: #ff0000;
+		}
+		#total{
+			position: absolute;
+			width: 120px;
+			height: 120px;
+			background-color: #f00;
+			left: 50%;
+			top: 50%;
+		}
+	</style>
+	<body>
+		事件
+		<ul>
+			<li>当用户点击鼠标时 onclick / ondblclick</li>
+			<li>当网页已加载时 onload </li>
+			<li>当图片已加载时 *</li>
+			<li>当鼠标移动到元素上时 onmouseover </li>
+			<li>当输入字段被改变时 onchange</li>
+			<li>当 HTML 表单被提交时 onsubmit</li>
+			<li>当用户触发按键时 onkeydown / onkeypress / onkeyup </li>
+		</ul>
+		
+		<span style="color: #FF0000;">课堂作业1:速度和数量可调</span>
+		<br>
+		<span style="color: #FF0000;">课堂作业2:每个雪花被点击时都销毁</span>
+		<br>
+		
+		下落速度:<input id="text1" type="text" style="width: 200px;">
+		<br>
+		产生频率:<input id="text2" type="text" style="width: 200px;">
+		<br>
+		修改动画:<input id="button3" onclick = "getTextValue()" class="myButton" type="button" value="修改动画" onclick="getTextValue('text1')">
+		开始:<input id="button1" class="myButton" type="button"  value="按钮1">
+		清空:<input id="button2" class="myButton" type="button"  value="按钮2">
+		 <div id="total"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	//当鼠标移动到元素上时onmouseover
+	//先认识一下 - 事件源 - (事件对象)
+	document.getElementById("button1").onmouseover = function(e){
+		return;
+		//alert(1);
+		console.info(e);
+		//就是这个按钮本身 -- 事件源
+		document.getElementById("button2").value = "不关我的事啊";
+		e.target.style.color = "yellow";
+		e.target.value = "我被划过了";
+	}
+	//对象.addEventListener("没有on的事件类型",命名函数.false)--绑定事件
+	//onmouseout
+	document.getElementById("button1").onmouseout = function(e){
+		//alert(1);
+		console.info(e);
+		//就是这个按钮本身 -- 事件源
+		document.getElementById("button2").value = "按钮2";
+		e.target.style.color = "";
+		e.target.value = "按钮1";
+	}
+	
+	document.getElementById("text1").onchange = function(e){
+		console.info(e.target.value);
+		if(e.target.value.indexOf("shit")>=0){
+			e.target.value = "";
+		}
+	}
+	
+	//得到焦点时触发 onfocus
+	document.getElementById("text2").onfocus = function(e){
+		console.info("onfocus");
+	}
+	
+	//得到焦点时触发
+	document.getElementById("text2").onblur = function(e){
+		//自定义
+	}
+	
+	//下午
+	//1.获取input的值(传进来目标Input标签的值)
+	//修改动画需要两个参数1.下落2.产生频率
+	
+	function getTextValue(){
+		var fallSpeed = document.getElementById("text1").value;
+		var createHZ = document.getElementById("text2").value;
+
+		//容错
+		if(!fallSpeed||isNaN(fallSpeed)||!createHZ||isNaN(createHZ)){
+			
+			console.info("没有这个shuzi");
+			return;
+		}else{
+			settingAniamte(fallSpeed,createHZ);
+		}
+
+		
+	}
+
+	
+
+	var rainCount = 0; //当前雨滴数量
+	var rainMax = 600; //雨滴总数量
+	function doRainFall(fallingSpeed) {
+		if (rainCount >= rainMax) {
+			return;
+		}
+		if(!fallingSpeed){
+			fallingSpeed = 100;
+		}
+		var rainFall = document.createElement("div"); //创建div
+		rainFall.setAttribute("class", "rain");
+		document.body.appendChild(rainFall);
+		rainFall.style.top = "0px";
+		rainFall.style.left = Math.random() * 100 + "%";
+		
+		var count = 0;
+		rainFall.onclick = function(){
+			
+			rainFall.remove();
+			count += 1;
+
+		};
+		document.getElementById("total").innerText =count;
+
+		
+		document.body.appendChild(rainFall);
+		rainCount += 1;
+
+		var rainTimer = setInterval(function() {
+			var newTop = rainFall.style.top.replace("px", "");
+			newTop = parseFloat(newTop);
+			newTop += 20;
+			//落地时让他消失
+			if (newTop >= 800) {
+				rainFall.remove();
+				rainCount -= 1;
+				clearInterval(rainTimer);
+			}
+			rainFall.style.top = newTop + "px";
+
+		}, fallingSpeed)
+	}
+
+	var aa=setInterval(function() {
+		doRainFall(200);
+	}, 400);//产生频率
+	//调整动画函数
+	function settingAniamte(fallSpeed,createHZ){
+		clearInterval(aa);
+		aa=setInterval(function() {
+			doRainFall(fallSpeed);
+		}, createHZ);//产生频率
+		document.getElementById("button2").onclick=function displayDate(e){
+			clearInterval(aa);
+		}
+
+	}
+	
+	
+	
+	
+	// document.getElementById("button2").onclick=function displayDate(e){
+	// 	//alert(e);
+	// 	//document.getElementsByTagName("div").style.display = "none";
+	// 	clearInterval(clear0);
+	// 	//doRainFall();
+	// }
+	// document.getElementById("button1").onclick=function displayDate(e){
+	// 
+	// 	var clear0 = setInterval(function() {
+	// 	doRainFall();
+	// 	}, 60);
+	// 	
+	// }
+</script>

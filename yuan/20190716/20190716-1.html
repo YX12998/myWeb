@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 原则 - js 对dom 的操作, 一定要等dom渲染完成
+			// 回调函数(前置条件) != 自调用/立即执行函数
+			document.addEventListener("DOMContentLoaded", function(e) {
+				console.info("来来来,打断点");
+				//alert("xiner");
+				document.getElementById("div1").innerHTML = "<p>猪</p>";
+			});
+
+			console.info("我先来!!!");
+			// console.info("来来来,打断点");
+			// //alert("xiner");
+			// document.getElementById("div1").innerHTML = "<p>猪</p>";
+		</script>
+		<div id="div1">狗</div>
+	</body>
+</html><!-- 浏览器触发DOMContentLoaded -->
+<script type="text/javascript">
+	// 向页面添加script标签, 则script标签里面语句会立即执行
+	var newScript = document.createElement("script");
+	newScript.innerText = "alert('嘿嘿')";
+	document.head.appendChild(newScript);
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.monster {
+				width: 200px;
+				height: 200px;
+				border: 1px solid #ff0000;
+				border-radius: 50%;
+				background-color: #ff0000;
+			}
+		</style>
+	</head>
+
+	<body style="text-align: center;">
+		appendChild() 这个函数,,得先去找爹
+		<!-- <div class="monster"></div> -->
+		<input type="button" id="bt1" value="禁用你" />
+		<input type="button" id="bt2" value="不关我的事啊" />
+		<input type="button" id="bt3" value="停止报时" />
+		<input type="button" id="bt4" value="继续报时" />
+
+	</body>
+</html>
+<script type="text/javascript">
+	var timer = setInterval(function() {
+		var now = new Date().getTime();
+		console.info(now);
+	}, 1000)
+
+	document.getElementById("bt3").onclick = function() {
+		clearInterval(timer);
+	}
+	document.getElementById("bt4").onclick = function() {
+		timer = setInterval(function() {
+			var now = new Date().getTime();
+			console.info(now);
+		}, 1000)
+	}
+
+
+
+
+	var button1 = document.getElementById("bt1");
+	button1.onclick = function() {
+		document.getElementById("bt2").disabled = "true";
+		document.getElementById("bt2").value = "已经禁用";
+	}
+
+	var divE = document.createElement("div"); //创建div
+	//设置div属性
+	// var divClass = document.createAttribute("class");//创建属性
+	// divClass.value = "monster"
+	// divE.setAttributeNode(divClass);//给div添加属性
+
+	divE.setAttribute("class", "monster"); //class要用这种方式给.其他属性可点出来
+	divE.setAttribute("id", "fang01");
+
+
+	// divE.id = "fang01";//其他属性可点出来
+	divE.innerText = "我是猪";
+	divE.style.fontSize = "24px";
+
+	document.body.appendChild(divE); //把新的子节点添加到指定节点       
+
+	//innerText 表示标签里的文本,可直接点
+	//document.getElementById("fang01").innerText = "俺不是猪";
+	//document.getElementByClassName("monster")[0].innerText = "俺是驴";
+	//innerHtml 表示标签里的html文本
+	document.getElementById("fang01").innerHTML = "俺厉害";
+	document.getElementById("fang01").innerHTML = "俺<br>是<br>小猪<br>佩奇";
+	document.getElementById("fang01").innerText = "俺<br>是<br>小猪<br>佩奇";
+
+	//删除节点()
+	//document.getElementById("fang01").remove()
+
+	//父节点.removeChild(),bodyNode.childNodes[0]
+	//var bodyNode = document.body;
+	//list.removeChild(bodyNode.childNodes[0]);//删除某个儿子
+</script>

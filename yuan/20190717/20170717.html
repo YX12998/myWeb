@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>如果你点我，我就会消失。</p>
+		<p>点我消失!</p>
+		<p>点我也消失!</p>
+	</body>
+</html>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		console.info("袁鑫");
+	});
+
+	$(document).ready(function() {
+		$("p").click(function() {
+			$(this).hide();
+		});
+	});
+</script>

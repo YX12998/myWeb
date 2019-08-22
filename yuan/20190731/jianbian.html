@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background-color: #000;
+			}
+			.a{
+				width: 100px;
+				height: 100px;
+				box-shadow: gold 0px 0px 40px ; /*inset内阴影*/
+				border-radius: 50%;
+				background: yellow;
+				margin: 80px auto;
+				/* background-image: radial-gradient(red 1%,green 19%,blue 30%,orange 40%,yellowgreen 50%,greenyellow 60%,darkred 70%,darkgreen 80%,gray 90% ); */
+			}
+			
+
+		</style>
+	</head>
+	<body>
+		<div class="a" id="box1"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var r = 10;
+	var w = 100;
+	var flag1 = false;
+	setInterval(function(){
+		if(r>200){
+			flag1 = false;
+		}
+		if(r<10){
+			flag1 = true;
+		}
+		if(flag1){
+			r+=12;
+			w-=6;
+		}else{
+			r-=12;
+			w+=6;
+		}
+		console.info(r);
+		document.getElementById("box1").style.boxShadow = "gold 0px 0px "+r+"px";
+		document.getElementById("box1").style.width = w+"px";
+	},50);
+</script>

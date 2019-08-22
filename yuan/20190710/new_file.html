@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- 禁用右键 -->
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<script src="jquery.js"></script>
+
+		<title>事件</title>
+	</head>
+	<style>
+		body{
+			background-color: lavender;
+			text-align: center;
+		}
+		.rain{
+			position: absolute;
+			background-color: white;
+			/* border: 1px solid skyblue; */
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			left: 20%;
+			top: 0;
+		}
+		.myButton:hover{
+			background-color: #ff0000;
+		}
+		#total{
+			position: absolute;
+			width: 120px;
+			height: 120px;
+			background-color: #f00;
+			left: 50%;
+			top: 50%;
+			font-size: 72px;
+			line-height: 120px;
+			border-radius: 50%;
+		}
+		.plan{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			background-color: black;
+			left: 200px;
+			top: 500px;
+		}
+	</style>
+	<body>
+
+		下落速度:<input id="text1" type="text" style="width: 200px;">
+		<br>
+		产生频率:<input id="text2" type="text" style="width: 200px;">
+		<br>
+		修改动画:<input id="button3" onclick = "getTextValue()" class="myButton" type="button" value="修改动画" onclick="getTextValue('text1')">
+		 <div id="total"></div>
+		 <div class="plan" id="plan"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	function getTextValue(){
+
+		var fallSpeed = document.getElementById("text1").value;
+		var createHZ = document.getElementById("text2").value;
+
+		//容错
+		if(!fallSpeed||isNaN(fallSpeed)||!createHZ||isNaN(createHZ)){
+			
+			console.info("没有这个shuzi");
+			return;
+		}else{
+			settingAniamte(fallSpeed,createHZ);
+		}
+
+		
+	}
+
+	
+	var yourTotal = 0 ;
+	document.getElementById("total").innerText = yourTotal;
+	var rainCount = 0; //当前雨滴数量
+	var rainMax = 600; //雨滴总数量
+	function doRainFall(fallingSpeed) {
+		if (rainCount >= rainMax) {
+			return;
+		}
+		if(!fallingSpeed){
+			fallingSpeed = 100;
+		}
+		var rainFall = document.createElement("div"); //创建div
+		rainFall.setAttribute("class", "rain");
+		document.body.appendChild(rainFall);
+		rainFall.style.top = "0px";
+		rainFall.style.left = Math.random() * 100 + "%";
+		
+		
+		rainFall.onclick = function( e ){
+			rainCount -= 1;
+			$(rainFall).remove();
+			//rainFall.remove();
+			//document.body.removeChild( e.target );
+			yourTotal += 1;
+			document.getElementById("total").innerText = yourTotal;
+		};
+
+		
+		document.body.appendChild(rainFall);
+		rainCount += 1;
+
+		var rainTimer = setInterval(function() {
+			var newTop = rainFall.style.top.replace("px", "");
+			newTop = parseFloat(newTop);
+			newTop += Math.floor(Math.random() * 15 + 5);
+			rainFall.style.top = newTop + "px";
+			
+			// 11取下落物体的x
+			var newLeft = rainFall.style.left.replace("px", "");
+			newLeft = parseFloat(newLeft);
+			
+			//碰撞测试
+			var planX = document.getElementById("plan").style.left;
+			planX = planX.replace("px", "");
+			planX = parseInt(planX);
+			
+			var planY = document.getElementById("plan").style.top;
+			planY = planY.replace("px", "");
+			planY = parseInt(planY);
+			
+			if( Math.abs(newLeft - planX) <40 ){
+				if( Math.abs(newTop - planY) <40 ){
+						alert("被击中");
+						location.reload();
+				}
+			}
+			
+			//落地时让他消失
+			if (newTop >= 800) {
+				rainFall.remove();
+				rainCount -= 1;
+				clearInterval(rainTimer);
+			}
+			// rainFall.style.top = newTop + "px";
+
+		}, fallingSpeed)
+	}
+
+	var aa=setInterval(function() {
+		doRainFall(200);
+	}, 400);//产生频率
+	//调整动画函数
+	function settingAniamte(fallSpeed,createHZ){
+		clearInterval(aa);
+		aa=setInterval(function() {
+			doRainFall(fallSpeed);
+		}, createHZ);//产生频率
+	}
+	
+	document.getElementById("plan").style.left = "200px";
+	document.getElementById("plan").style.top = "500px";
+	window.onkeypress = function(e){
+		var planX = document.getElementById("plan").style.left;
+		planX = planX.replace("px", "");
+		planX = parseInt(planX);
+		
+		var planY = document.getElementById("plan").style.top;
+		planY = planY.replace("px", "");
+		planY = parseInt(planY);
+		
+		if( e.key == "w" ){
+			planY -= 20;
+		}
+		if( e.key == "s" ){
+			planY += 20;
+		}
+		if( e.key == "a" ){
+			planX -= 20;
+		}
+		if( e.key == "d" ){
+			planX += 20;
+		}
+		
+		document.getElementById("plan").style.left = planX + "px";
+		document.getElementById("plan").style.top = planY + "px";
+	}
+
+</script>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>jq事件</title>
+	</head>
+	<body>
+		<input type="button" id="bt1" value="多种绑定的方法" />
+		<p>我有一只小毛驴</p>
+		<p>我从来也不骑</p>
+		<p>世界上最遥远的距离</p>
+		<p>是我们爱的要死</p>
+		<p>你却在玩手机</p>
+		<p>明明我已经知道真相</p>
+		<p>你也知道我知道真相</p>
+		<p>你还在那里撒谎</p>
+
+		<hr>
+
+		<div class="" id="father">
+			<input type="button" id="bt2" value="大儿子">
+			<input type="button" id="bt3" value="生成小儿子">
+			<p>小儿子</p>
+		</div>
+
+	</body>
+</html>
+<script type="text/javascript">
+	// 探讨问题1: 注册事件/绑定事件的方法
+
+	// 课堂作业1: 练习常用的事件
+	$(function() {
+		// 多种绑定方法 - 以click实例为例
+
+		function btClick(e) {
+			console.info("触发了绑定事件")
+		}
+
+		// 绑定方法1 - 直接绑定
+		$("#bt1").click(function() {
+			btClick();
+		});
+		// $("#bt1").click( btClick );
+		//绑定方法2 - on函数
+		// $("#bt2").on("click", function(){ btClick(); });
+		// $("#bt2").on("click", btClick );
+		//绑定方法3 - 原生方式
+		// $("#bt1")[0].onclick = function(e){
+		// 	btClick();
+		// };
+
+		// 绑定方法4 - bind
+		// $("#bt1").bind("click", function(){ btClick(); });
+
+		// 事件解绑 - 重要概念!!! ----- 原生js做法是 时间函数 = null
+		// $("#bt1").unbind("click"); // 如果不传参数, 所有事件函数都解绑
+
+
+
+
+		// 所有p标签的鼠标移入事件
+		// 		$("p").mouseover(function(e){
+		// 			$(e.target).css({
+		// 				color: "red",
+		// 				fontSize: "24px",
+		// 				background: "#e6e6e6"
+		// 			});
+		// 		});
+		// 		$("p").mouseout(function(e){
+		// 			$(e.target).css({
+		// 				color: "black",
+		// 				fontSize: "16px",
+		// 				background: ""
+		// 			});
+		// 		});
+		// 
+
+
+
+
+		// 模拟事件 - 对已绑定了的函数事件, 可以执行执行, 代替触发
+		// $("p").mouseover();
+
+		// var count01 = 0;
+		// var timer1 = setInterval(function(){
+		// 	$("p").mouseout();
+		// 	for( var i = 0; i < 8; i++ ){
+		// 		if(i == count01){
+		// 			$( $("p")[i] ).mouseover();
+		// 		}
+		// 	}
+		// 	count01 += 1;
+		// 	if(count01 > 8){
+		// 		count01 = 0;
+		// 	}
+		// },600);
+
+
+	});
+
+
+	// 探讨问题2: 对未来元素的事件绑定 A. 子元素 B. 生成即绑定
+	// 针对子元素的事件
+	$("#father").delegate("#bt2", "click", function() {
+		$("p").slideToggle(); // 展开/隐藏
+	});
+	$("#father").delegate("#bt3", "click", function() {
+		// $(this).parent(); // $(this) 是按钮 $(this).parent() 是他爹
+		var newSon = $("<p>小儿子</p>"); 
+		// jquery中, 创建节点的一种方法 -- document.creaElement()
+		$(this).parent().append(newSon); // 向父节点添加新的子节点
+		
+		// $(newSon).click(function(){
+		// 	$(this).css({
+		// 		color: "#ff7733"
+		// 	});
+		// });
+		
+	});
+	
+	// 给子元素绑定事件
+	// $("#father p").click(function(){
+	// 	$(this).css({
+	// 		color: "#ff7733"
+	// 	});
+	// });
+	
+	// 未来元素事件绑定(通过他爹操作他)
+	$("#father").delegate("p", "click", function() {
+			$(this).css({
+				color: "#ff7733"
+			}); 
+	});
+	
+</script>

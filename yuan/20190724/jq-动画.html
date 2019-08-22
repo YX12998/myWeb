@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title></title>
+		<style>
+			.body{
+				position: absolute;
+			}
+			.light{
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				background-color: yellow;
+				/* filter: grayscale(100%); */
+				opacity: 0;
+				position: absolute;
+				left: 50%;
+				margin-left: -150px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="startAni" value="开灯" />
+		<input type="button" id="stopAni" value="关灯" />
+		<div class="light" id="light1"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		// $(selectoe).animate({params 1. 逗号隔开 2. 驼峰格式}, speed, callback函数名 ); 
+		// speed - "normal", "fast", "slow"
+		$(document.body).css({
+			background: "black"
+		});
+		$("#startAni").click(function(){
+			
+			//动画
+			$(".light").stop();
+			$(".light").animate({
+				opacity: 1,
+				width: "300px",
+				height: "300px",
+				marginLeft: "-150px"
+			}, 1500, function(){
+				$(document.body).css({
+					background: "yellow"
+				});
+			});
+			
+		});
+		
+		// 关灯 -- 无解, 动画是异步执行的
+		$("#stopAni").click(function(){
+			
+			$(".light").stop();
+			$(".light").animate({
+				opacity: 0,
+				width: "10px",
+				height: "10px",
+				marginLeft: "-5px"
+			}, 1500, function(){});
+			
+			$(document.body).css({
+				background: "black"
+			});
+		});
+			
+	});
+</script>

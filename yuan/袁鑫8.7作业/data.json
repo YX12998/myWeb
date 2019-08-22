@@ -1,0 +1,103 @@
+{
+	"allStudents": [{
+			"name": "fang",
+			"age": "34",
+			"grade": "prof"
+		},
+		{
+			"name": "leng",
+			"age": "46",
+			"grade": "jk"
+		},
+		{
+			"name": "xian",
+			"age": "30",
+			"grade": "jl"
+		},
+		{
+			"name": "lan",
+			"age": "24",
+			"grade": "mk"
+		},
+		{
+			"name": "xue",
+			"age": "55",
+			"grade": "ct"
+		},
+		{
+			"name": "wan",
+			"age": "12",
+			"grade": "oi"
+		},
+		{
+			"name": "yu",
+			"age": "13",
+			"grade": "sw"
+		},
+		{
+			"name": "uuu",
+			"age": "71",
+			"grade": "op"
+		},
+		{
+			"name": "lei",
+			"age": "14",
+			"grade": "pg"
+		},
+		{
+			"name": "zhang",
+			"age": "24",
+			"grade": "sr"
+		}
+	],
+
+	"department": [{
+			"deName": "办公室",
+			"leader": {
+				"name": "邓主任",
+				"rank": "二级警监",
+				"id": 910035
+			},
+			"menbers": [{
+					"name": "陈警官",
+					"rank": "文职警员",
+					"id": 910036
+				},
+				{
+					"name": "张茂",
+					"rank": "警司",
+					"id": 910022
+				}
+			]
+		},
+		{
+			"deName": "治安支队",
+			"leader": {
+				"name": "陆支队",
+				"rank": "二级警监",
+				"id": 916055
+			}
+		},
+		{
+			"deName": "读书支队",
+			"leader": {
+				"name": "李支队",
+				"rank": "二级警监",
+				"id": 910755
+			},
+			"menbers": [{
+					"name": "澄清",
+					"rank": "文职警员",
+					"id": 910076
+				},
+				{
+					"name": "大哥",
+					"rank": "警司",
+					"id": 910042
+				}
+			]
+		}
+	],
+
+	"songs": []
+}

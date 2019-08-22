@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>jq-对dom的增删操作</title>
+	</head>
+	<style type="text/css">
+		body{
+			text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+		#main{
+			margin: 0 auto;
+			width:860px;
+			height: 300px;
+			background-color: #ccc;
+		}
+		.card{
+			float: left;
+			height: 300px;
+			background-color: #602603;
+			margin-left: 40px;
+		}
+		img{
+			height: 300px;
+		}
+		.content{
+			width: 860px;
+			height: 300px;
+			margin: 0 auto;
+			background-color: greenyellow;
+		}
+	</style>
+	<body>
+		<div id="main" >
+			<div id="card1" class="card"><img src="01.png" alt=""></div>
+			<div id="card2" class="card"><img src="02.png" alt=""></div>
+			<div id="card3" class="card"><img src="03.png" alt=""></div>
+			<div id="card4" class="card"><img src="04.png" alt=""></div>
+
+		</div>
+		
+		<div id="content" class="content">
+			
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	// append() - 在被选元素的结尾插入内容
+	// prepend() - 在被选元素的开头插入内容
+	// after() - 在被选元素之后插入内容
+	// before() - 在被选元素之前插入内容
+	$(function() {
+		$("#content").append($("#card1"));
+		$("#content").prepend($("#card2"));
+		$("#content").after($("#card3"));
+		$("#content").before($("#card4"));
+
+	});
+</script>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>网格基本结构</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+		<!-- 兼容IE9 -->
+		 <!-- <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> -->
+         <!-- <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script> -->
+		<style type="text/css">
+			.father{
+				border: 1px solid red;
+				background-color: greenyellow;
+				min-height: 100px;
+			}
+			.hang{
+				min-height: 60px;
+			}
+			.lie{
+				border: 1px solid black;
+				background-color: lightcoral;
+				min-height: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container father">
+			<div class="row hang">
+				<div class="col-md-6 col-sm-8 lie">
+					莱克斯顿防火
+					泥科技感你说的你付款记录卡了
+					格式的感受到非比寻常VB小243电饭锅水电费发的规划对方过后我发撒
+					莱克斯顿防火
+					泥科技感你说的你付款记录卡了
+				</div>
+				<div class="col-md-6 col-sm-4 lie">
+					莱克斯顿防火
+					泥科技感你说的你付款记录卡了
+					格式的感受到非比寻常VB小243电饭锅水电费发的规划对方过后我发撒
+					莱克斯顿防火
+					泥科技感你说的你付款记录卡了
+				</div>
+			</div>
+		</div>
+		
+		<!-- 嵌套列 -->
+		<div class="container">
+		    <div class="row" >
+		        <div class="col-md-3">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 lie"></div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 lie"></div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 lie"></div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 lie"></div>
+					</div>
+				</div>
+		    </div>
+		</div>
+		
+		<!-- 排序: 从左到右, 向左拉的列数,向右推的列数 -->
+		<div class="container">
+		    <div class="row">
+		        <p>
+		            排序前
+		        </p>
+		        <div class="col-md-4 lie">
+		         我在左边
+		        </div>
+		        <div class="col-md-8 lie">
+		         我在右边
+		        </div>
+		    </div>
+		    <br>
+		    <div class="row">
+		        <p>
+		            排序后
+		        </p>
+		        <div class="col-md-4 col-md-push-8 lie">
+		         我在左边
+		        </div>
+		        <div class="col-md-8 col-md-pull-4 lie">
+		         我在右边
+		        </div>
+		    </div>
+		</div>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 lie"></div>
+				<div class="col-md-2 lie col-md-push-1"></div>
+				<div class="col-md-2 lie col-md-push-2"></div>
+				<div class="col-md-2 lie col-md-push-3"></div>
+			</div>
+		</div>
+
+		
+	</body>
+</html>
+<script type="text/javascript" src="jquery-2.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>

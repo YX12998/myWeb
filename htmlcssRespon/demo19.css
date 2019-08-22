@@ -1,0 +1,100 @@
+body {
+	background-color: orange;
+	margin: 0;
+	padding: 0;
+}
+
+.header1 {
+	background: black;
+	color: white;
+	height: 38px;
+	/* height: 140px; */
+}
+
+.Y {
+	/* display: block; */
+	float: left;
+	margin-left: 20px;
+	margin-top: 12px;
+	display: none;
+}
+nav{
+	position: relative;
+}
+
+nav li {
+	display: inline-block;
+	margin-left: 30px;
+	line-height: 38px;
+	list-style: none;
+}
+
+nav li:hover {
+	color: limegreen;
+}
+
+.nav-logo {
+	width: 80px;
+	height: 66px;
+	/* border: 1px solid #0099E5; */
+	position: absolute;
+	top: 0;
+	right: 20%;
+	background: url(p5.png)no-repeat;
+	background-size: 100%;
+	border-radius: 50%;
+}
+.banner1{
+	width: 100%;
+	height: 600px;
+	background: url(head.jpg)no-repeat;
+	background-size: 100%;
+	
+}
+.banner1 img{
+	width: 100%;
+}
+.banner1-tip{
+	width: 30%;
+	height: 120px;
+	background: black;
+	float: right;
+	margin-right: 40px;
+	margin-top: 80px;
+	color: white;
+	padding: 0 10px;
+}
+
+
+
+/* 以下是媒体查询样式 */
+@media (max-width: 660px) {
+	nav li {
+		display: none;
+
+	}
+
+	.Y {
+		display: block;
+	}
+
+	nav:hover li {
+		display: block;
+		width: 100%;
+		padding: 0 20px;
+	}
+
+	nav:hover {
+		background: black;
+	}
+	.banner1-tip{
+		width: 50%;
+		margin-top: 12px;
+	}
+	h3{
+		font-size: 18px;
+	}
+	p{
+		font-size: 12px
+	}
+}

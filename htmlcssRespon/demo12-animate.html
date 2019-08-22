@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动画演示</title>
+		<style type="text/css">
+			#div1 {
+				width: 20px;
+				height: 200px;
+				color: darkgoldenrod;
+				position: relative;
+				top: 300px;
+				background-color: gold;
+				border-radius: 5px;
+				box-shadow: 0 0 10px yellow;
+				/* animation-name: opChange;
+				animation-direction: alternate;
+				animation-duration: 5s;/*持续时间*/
+				/* animation-timing-function: ease-in-out;
+				animation-iteration-count: infinite; */
+				/*指定动画应该播放无限次（永远）*/
+				/* animation-delay: 0.2s; */
+				/* animation: opChange infinite 5s 0.2s ease-out reverse; */
+				/*先持续时间后延时,其他无序*/
+				
+			}
+
+			#div2 {
+				width: 20px;
+				height: 30px;
+				background-color: red;
+				position: absolute;	
+				border-radius: 5px 5px 0 0;
+			}
+			#div3 {
+				width: 20px;
+				height: 30px;
+				background-color: red;
+				position: absolute;
+				top: 170px;
+				border-radius: 0 0 5px 5px;
+			}
+
+			.opChange {
+				animation: opChange infinite 1s 0.2s ease-in-out alternate;
+			}
+
+			.posiChange {
+				animation: posiChange 2s infinite alternate;
+
+			}
+
+			@keyframes opChange {
+				from {
+					opacity: 1;
+				}
+
+				to {
+					opacity: 0;
+				}
+			}
+
+			@keyframes posiChange {
+
+				/* 50%{
+					left: 30%;
+				} */
+				from {
+					transform: rotate(0deg) scale(0);
+					left: 0%;
+				}
+
+				to {
+					transform: rotate(720deg) scale(5);
+					left: 80%;
+				}
+			}
+			span{
+				font-size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="透明度变化" id="bt1">
+		<input type="button" value="向右翻滚" id="bt2">
+		<div id="div1" class="">
+			<div id="div2" class=""><span>翻</span></div>
+			<br><br>如意金箍棒
+			<div id="div3" class=""><span>滚</span></div>
+		</div>
+
+	</body>
+</html>
+<script type="text/javascript">
+	document.getElementById("bt1").onclick = function() {
+		document.getElementById("div1").setAttribute("class", "opChange");
+	}
+	document.getElementById("bt2").onclick = function() {
+		document.getElementById("div1").setAttribute("class", "posiChange");
+		setTimeout(function(){
+			document.getElementById("div1").setAttribute("class", "");
+		},4000)
+	}
+</script>

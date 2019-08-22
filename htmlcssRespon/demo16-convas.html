@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.dd {
+				width: 900px;
+				height: 600px;
+				margin: 0 auto;
+			}
+
+			#cavsElem {
+				background-image: -webkit-linear-gradient(left top, yellow 20%, green 50%, red 80%);
+			}
+
+			#cavsElem2 {
+				background-image: -webkit-linear-gradient(left top, yellow 20%, green 50%, red 80%);
+			}
+			#cavsElem3 {
+				background-color: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dd"><canvas id="cavsElem"></canvas></div>
+		<canvas id="cavsElem2"></canvas>
+		<canvas id="cavsElem3"></canvas>
+
+
+	</body>
+</html>
+<script type="text/javascript">
+	// var canvas = document.getElementById('cavsElem');
+	// var context = canvas.getContext('2d');
+
+	// context.beginPath();
+	// context.moveTo(10, 10); // 移动画笔到
+	// context.lineTo(10, 110); // 拟画一条线,从起点到目标位置
+	// context.lineTo(80, 90);
+	// context.lineTo(10, 70);
+	// context.lineTo(110, 60);
+	// context.closePath();
+	// 
+	// context.strokeStyle = "#2C41FF";
+	// context.fillStyle = "#ff0000";
+	// context.fill();
+	// context.stroke(); // 执行绘制
+
+	// 绘制楼梯
+	// context.beginPath();
+	// context.moveTo(20, 10); // 移动画笔到
+	// context.lineTo(20, 130); // 拟画一条线,从起点到目标位置
+	// context.lineTo(280, 130);
+	// context.lineTo(280, 110);
+	// context.lineTo(240, 110);
+	// context.lineTo(240, 90);
+	// context.lineTo(200, 90);
+	// context.lineTo(200, 70);
+	// context.lineTo(160, 70);
+	// context.lineTo(160, 50);
+	// context.lineTo(120, 50);
+	// context.lineTo(120, 30);
+	// context.lineTo(80, 30);
+	// context.lineTo(80, 10);
+	// context.closePath();
+	// context.fillStyle = "greenyellow";
+	// context.fill();
+
+	// var x = 280, y = 130; 
+	// for(var i = 0; i<12; i++){
+	// 	
+	// }
+	// context.lineTo(x, y)
+
+	function drowSteps(stepCount) {
+		var canvas = document.getElementById('cavsElem');
+		canvas.width = 900;
+		canvas.height = 600;
+		var context = canvas.getContext('2d');
+		var baseX = 0;
+		var baseY = 0;
+		context.moveTo(baseX, baseY);
+		var counter = 0;
+		var all = stepCount || 9;
+		// while(counter <= all*2){
+		// 	if( counter % 2 == 0 ){
+		// 		baseX += 50;
+		// 	}else{
+		// 		baseY +=50;
+		// 	}
+		// 	context.lineTo(baseX, baseY);
+		// 	counter++;
+		// }
+
+		var thisTimer = setInterval(function() {
+			if (counter > all * 2) {
+				clearInterval(thisTimer);
+			}
+			if (counter % 2 == 0) {
+				baseX += 50;
+			} else {
+				baseY += 50;
+			}
+			context.lineTo(baseX, baseY);
+			counter++;
+			context.stroke();
+
+		}, 400);
+
+		context.lineTo(0, baseY);
+		context.stroke();
+		context.closePath();
+		context.fillStyle = "red";
+		context.fill();
+
+	}
+	drowSteps(8);
+	// 矩形
+	function draw() {
+		var canvas = document.getElementById('cavsElem2');
+		canvas.width = 300;
+		canvas.height = 300;
+		if (!canvas.getContext) return;
+		var ctx = canvas.getContext("2d");
+		ctx.fillStyle = "rgb(200,0,0)";
+		//绘制矩形
+		ctx.fillRect(10, 10, 55, 50);
+
+		ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+		ctx.fillRect(30, 30, 55, 50);
+	}
+	draw();
+	// 圆
+	function dra() {
+		var canvas = document.getElementById('cavsElem3');
+		canvas.width = 300;
+		canvas.height = 300;
+
+		var ctx = canvas.getContext("2d");
+		ctx.strokeStyle = "#FFA500";
+		ctx.beginPath();
+		ctx.arc(50, 50, 40, 0, Math.PI / 0.5, false);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(150, 150, 40, 0, Math.PI, false);
+		ctx.fill();
+		
+		// 圆角
+		ctx.beginPath();
+		ctx.arcTo(10, 10, 20, 20, 80)
+		ctx.fill();
+	}
+	dra();
+</script>

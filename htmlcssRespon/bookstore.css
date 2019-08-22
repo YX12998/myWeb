@@ -1,0 +1,78 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #f7f7f7;
+}
+@font-face {
+				font-family:myFont1;
+				src: url('fonts/叶根友特隶简体.ttf');
+			}
+header,.items{
+	margin-bottom: 20px;
+	width: 1250px;
+	height: 400px;
+	padding-left: 20px;
+	margin: 10px auto;
+}
+.items{
+	height: 320px;
+}
+.p{
+	background-color: #2a809d;
+	height: 320px;
+	background-image: linear-gradient(
+	to bottom,
+	#4d6bd9 20%,
+	#b2d3ff 80%);/*设置该元素背景自上而下线性渐变*/
+	font-family: 'myFont1';/*设置字体为微软雅黑*/
+	font-size: 30px;
+	font-weight: bold;
+	color: #fff;
+	padding-top: 40px;
+	line-height: 30px;
+}
+.item{
+	width: 230px;
+	height: 300px;
+	text-align: center;
+	background-color: #fff;
+	float: left;
+	position: relative;
+	top: 0;
+	overflow: hidden;
+	/*css3 新增动画属性: 过度,all(默认值)指所有属性改变,0.5s内完成*/
+	transition: all 0.5s;
+	box-shadow: #41a8ff 0px 5px 5px;
+	margin-right: 20px;
+}
+.pic{
+	margin-top: -15px;
+	margin-left: -35px;
+}
+.desc{
+	position: absolute;
+	bottom: -100px;
+	width: 100%;
+	height: 100px;
+	background-color: #58a6f0;
+	transition: all 0.5s;
+	background-color: rgba(88,166,240,0.8);	
+}
+
+.item:hover{
+	top: -5px;
+	box-shadow: 0 0 15px #aaa;
+}
+
+.item:hover .desc{
+	bottom: 0;
+}
+.detail{
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 50px;
+}
+.detail i{
+	color: red;
+}
+

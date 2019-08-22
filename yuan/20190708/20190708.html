@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数</title>
+		<style>
+			body{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		1.1函数声明:
+		function functionName(parameters){
+			要执行的代码
+		}
+		
+	</body>
+</html>
+
+<script type="text/javascript">
+	var a = 100;
+	var xx = "xx";
+	function myFunction(a,b,c,d){
+		//函数体,可以使用参数,也可以使用外部变量
+		console.info(a+d);
+		console.info(xx);
+		console.info(c);
+
+	}
+	//显示的调用函数
+	myFunction(10,10,5,a);
+	
+	//写一个函数返回a + b的值
+	function addEx(a,b){
+		//console.info(a+b);
+		return a+b;
+	}
+	console.info(addEx(2,6));
+	
+	//匿名函数
+	var times = function(a,b){
+		return a*b;
+	}
+	
+	//return 关键字 - 结束函数的执行 终止函数
+	function demo1(){
+		var a=1,b=2,c=3;
+		if(a>0){
+			return a;
+		}
+		var d = a+b+c;
+		console.info(d);
+	}
+	
+	function abMax(a,b){
+		if(isNaN(a||b)==true){
+			console.info("输入错误");
+			return;
+		}
+		if(a>b){
+			return a;
+		}else{
+			return b;
+		}
+	}
+	
+	var arr01 = ["fang","yang","liu","zhang"];
+	
+	function matchTest(str,arr){
+		// if(arr.indexOf(str)>=0){
+		// 	return arr.indexOf(str);
+		// }else{
+		// 	return -1;
+		// }
+		
+		for(var i = 0;i<arr.length;i++){
+			if(str == arr[i]){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	//自调用 / 立即执行函数( 参数是个匿名函数,两个括号,后者传参)
+	(function(a,b){
+		
+	} )(1,2);
+	
+	//构造器函数
+	
+	function Song(index,name,type,auther,total){
+		this.index = index;
+		this.name = name;
+		this.type = type;
+		this.auther = auther;
+		this.total = total;
+		
+		this.perfact = function(){
+			if(this.total>80){
+				this.auther += "******";
+			}else{
+				this.auther = this.auther.replace("******","");
+
+			}
+		}
+		//setter / getter
+		this.setTotal =function(pTotal){
+			this.total = pTotal;
+			this.perfact();
+			console.info(this.auther);
+		}
+		this.perfact();//初始化动作 int();
+	}
+	var song1 = new Song(0,"清明上河图","古风","西瓜",98);
+	var song2 = new Song(1,"清明雨上","流行","许嵩",96);
+	
+	console.info(song2);
+	song2.total = 70;
+	song2.perfact();
+	console.info(song2);
+	
+	//4s店的库存,以车的牌子CarList建立,新增库存表时,算一下总价
+	var prices = {
+		ford:12,
+		Benz:40,
+		changan:10,
+		haval:15,
+		suzuki:14,
+		volvo:20
+	}
+	function CarList( brand,count ){
+		this.brand = brand;
+		this.count = count;
+		//修改这,自动计算总价
+		this.getTotalPrice = function(){
+			var singlePrice = prices[this.brand];
+			if(singlePrice){
+				this.totalPrice = singlePrice*this.count;
+			}else{
+				this.totalPrice = 0;
+			}
+			
+			
+		}
+		this.getTotalPrice();//执行
+		
+	}
+	
+	//今天入库奔驰10辆,福特20辆,哈佛5辆,长安4辆,铃木6辆,volvo18辆
+	// var fordPrice = new CarList("ford",20);
+	// var BenzPrice = new CarList("Benz",10);
+	// var changanPrice = new CarList("changan",4);
+	// var havalPrice = new CarList("haval",5);
+	// var suzukiPrice = new CarList("suzuki",6);
+	// var volvoPrice = new CarList("volvo",18);
+	// 
+	// var allPrice = fordPrice.totalPrice+BenzPrice.totalPrice+changanPrice.totalPrice
+	// +havalPrice.totalPrice+suzukiPrice.totalPrice+volvoPrice.totalPrice;
+	var all = [];
+	all.push(new CarList("ford",20));
+	all.push(new CarList("Benz",10));
+	all.push(new CarList("changan",4));
+	all.push(new CarList("haval",5));
+	all.push(new CarList("suzuki",6));
+	all.push(new CarList("volvo",18));
+	
+	var allPrice = 0;
+	for(var i=0; i<all.length;i++ ){
+		allPrice+=all[i].totalPrice;
+		console.info("小计" +allPrice+"万");
+	}
+	
+	console.info("库存总价格" +allPrice+"万");
+	
+	
+</script>

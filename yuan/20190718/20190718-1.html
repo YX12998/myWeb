@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		.pig {
+			/* background-image: url(乔治.png); */
+			/* background-size: 100%; */
+			/* background-repeat: no-repeat; */
+			width: 1200px;
+			height: 800px;
+			/* background-color: orange; */
+			margin: 0 auto;
+			position: relative;
+			
+
+		}
+		.iAmPig {
+			background-image: url(乔治.png);
+			background-size: 100%;
+			width: 160px;
+			height: 120px;
+			position: absolute;
+		}
+		.iPig {
+			background-image: url(猪头.png);
+			background-size: 100%;
+			width: 160px;
+			height: 150px;
+			position: absolute;
+		}
+		.aa{
+			width: 0;
+			height: 0;
+		}
+	</style>
+	<body>
+		<div class="iAmPig" id="iAmPig">
+	</body>
+</html>
+<script type="text/javascript">
+			$(document).ready(function() {
+
+				/*
+				$("body").keydown(function(){
+
+
+				});
+				*/
+				var catchIt = false;
+				var bskerer;
+				var catchTimes = 0;
+				var hz = 50; // 默认 50
+				function goOnDoIt() {
+
+					bskerer = setInterval(function() {
+						var situationRam = parseInt(Math.random() * 10);
+						if(situationRam % 2 == 0) {
+							$("#iAmPig").animate({
+								left: parseInt(Math.random() * 1000) + 'px'
+
+							});
+						} else {
+							$("#iAmPig").animate({
+								top: parseInt(Math.random() * 800) + 'px'
+
+							});
+						}
+					}, hz);
+				}
+				goOnDoIt();
+				
+				$("#iAmPig").click(function() {
+					// $("#iAmPig").remove();
+					$("#iAmPig").addClass("iPig");
+					catchIt = true;
+					catchTimes++;
+					alert('这是乔治第 ' + catchTimes + " 次被你抓住");
+					catchIt = false;
+				});
+
+			});
+</script>
